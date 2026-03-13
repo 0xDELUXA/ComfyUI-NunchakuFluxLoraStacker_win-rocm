@@ -5,8 +5,30 @@ No JavaScript required.
 
 import logging
 import os
-import folder_paths
 import sys
+import types
+import torch
+
+if not hasattr(torch, 'distributed') or not hasattr(torch.distributed, 'is_available') or not torch.distributed.is_available():
+    dist_stub = types.ModuleType('torch.distributed')
+    dist_stub.is_available = lambda: False
+    dist_stub.is_initialized = lambda: False
+    dist_stub.DTensor = type(None)
+    dist_stub.tensor = torch.tensor
+    dist_stub.get_rank = lambda: 0
+    dist_stub.get_world_size = lambda: 1
+    sys.modules['torch.distributed'] = dist_stub
+    sys.modules['torch.distributed.tensor'] = dist_stub
+    sys.modules['torch.distributed.device_mesh'] = dist_stub
+    torch.distributed = dist_stub
+else:
+    import torch.distributed as dist
+    if not hasattr(dist, 'DTensor'):
+        dist.DTensor = type(None)
+    if not hasattr(dist, 'tensor'):
+        dist.tensor = torch.tensor
+
+import folder_paths
 from typing import Tuple
 from diffusers import DiffusionPipeline
 
@@ -152,7 +174,9 @@ class StandardLoraLoaderBase:
                     print(f"[SDNQ LoRA Stacker] ✓ LoRA {i} loaded: {lora_selection} (strength: {lora_strength})")
                     
                 except Exception as e:
+                    import traceback
                     print(f"[SDNQ LoRA Stacker] ⚠️  Failed to load LoRA {i} ({lora_selection}): {e}")
+                    traceback.print_exc()
                     continue
         
         # Set all adapters with their weights
