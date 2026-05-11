@@ -1,11 +1,11 @@
 name: Publish to Comfy registry
 on:
   workflow_dispatch:
+  # Publish once per release tag only. Pushing pyproject.toml to main would
+  # re-run with the same [project].version and hit 400 "node version already exists".
   push:
-    branches:
-      - main
-    paths:
-      - "pyproject.toml"
+    tags:
+      - "v*"
 
 jobs:
   publish-node:
