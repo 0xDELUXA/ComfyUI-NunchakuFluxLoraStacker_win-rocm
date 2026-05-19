@@ -193,4 +193,4 @@ Utility node that provides flexible text input/output management with manual edi
 
 ## License
 
-This project is licensed under the MIT License.
+This integration is based on **[gseth/ControlAltAI-Nodes](https://github.com/gseth/ControlAltAI-Nodes)** (Python 3.13–compatible fork of the ControlAltAI node collection). The upstream project is licensed under the **[MIT License](https://github.com/gseth/ControlAltAI-Nodes)**. Copyright and terms follow the upstream repository and ControlAltAI contributors.

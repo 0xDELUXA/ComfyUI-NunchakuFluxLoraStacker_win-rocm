@@ -34,7 +34,7 @@ This repository provides **eleven custom nodes** for ComfyUI:
 
     <img src="png/Florence2.png" width="400">
 
-9. **ControlAltAI** (11 nodes) — Flux-oriented utilities (sampler, Union ControlNet, logic switches, megapixel calc, etc.). Details: **[nodes/controlaltai/controlalttai.md](nodes/controlaltai/controlalttai.md)**
+9. **ControlAltAI** (11 nodes) — Flux/SDXL utility nodes merged from a [Python 3.13–compatible fork](https://github.com/gseth/ControlAltAI-Nodes). Details: **[nodes/controlaltai/controlalttai.md](nodes/controlaltai/controlalttai.md)**
 
 ---
 
@@ -212,7 +212,16 @@ Florence-2–specific packages include **transformers**, **accelerate**, **peft*
 
 ## ControlAltAI nodes
 
-Integrated from [ControlAltAI-Nodes](https://github.com/StartHua/ComfyUI-ControlAltAI-Nodes) (Python 3.13–compatible fork). Node list, parameters, and screenshots: **[nodes/controlaltai/controlalttai.md](nodes/controlaltai/controlalttai.md)** (see also [Nodes](nodes/controlaltai/controlalttai.md#nodes) in that file). Frontend helper for **Integer Settings Advanced**: `js/integer_settings_advanced.js`.
+These nodes come from **[gseth/ControlAltAI-Nodes](https://github.com/gseth/ControlAltAI-Nodes)**, a **Python 3.13–compatible** fork of the ControlAltAI ComfyUI node set (Flux/SDXL-oriented samplers, Union ControlNet, logic switches, megapixel helpers, and related utilities). The fork was developed separately; it is **bundled here under `nodes/controlaltai/`** so you do not need another custom-node repository for the same functionality.
+
+| Item | Detail |
+|------|--------|
+| **Upstream** | [gseth/ControlAltAI-Nodes](https://github.com/gseth/ControlAltAI-Nodes) |
+| **License** | [MIT License](https://github.com/gseth/ControlAltAI-Nodes) (ControlAltAI contributors; fork by [gseth](https://github.com/gseth)) |
+| **Docs** | Node list, parameters, screenshots: **[nodes/controlaltai/controlalttai.md](nodes/controlaltai/controlalttai.md)** ([Nodes](nodes/controlaltai/controlalttai.md#nodes)) |
+| **Frontend** | `js/integer_settings_advanced.js` (Integer Settings Advanced widget; loaded via this repo’s `WEB_DIRECTORY`) |
+
+Upstream attribution and license terms are also listed under **Credits** and **License** below.
 
 ---
 
@@ -251,10 +260,12 @@ See [Changelog](md/CHANGELOG.md) for the full release history.
 - Dynamic UI implementation based on [efficiency-nodes-comfyui](https://github.com/jags111/efficiency-nodes-comfyui)
 - Fast Groups Bypasser V2 ported from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy)
 - Florence-2 nodes trace to [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2); extended here for Sage Attention 3 and Transformers 5.x, then integrated under `nodes/florence2/` (see **Upstream and integration** above)
+- ControlAltAI nodes under `nodes/controlaltai/` are derived from [gseth/ControlAltAI-Nodes](https://github.com/gseth/ControlAltAI-Nodes) and are licensed under the **MIT License**
 
 ## License
 
-- This repository is licensed under Apache-2.0
-- Fast Groups Bypasser V2 is ported from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) and is licensed under MIT License
+- This repository is licensed under **Apache-2.0**
+- Fast Groups Bypasser V2 is ported from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) and is licensed under **MIT License**
 - Florence-2 code under `nodes/florence2/` is derived from [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2) and is licensed under the **MIT License**; see `nodes/florence2/LICENSE` for the full text and copyright notice for that subtree.
+- ControlAltAI code under `nodes/controlaltai/` is derived from [gseth/ControlAltAI-Nodes](https://github.com/gseth/ControlAltAI-Nodes) and is licensed under the **MIT License**; see `nodes/controlaltai/controlalttai.md` for documentation and upstream reference.
 
