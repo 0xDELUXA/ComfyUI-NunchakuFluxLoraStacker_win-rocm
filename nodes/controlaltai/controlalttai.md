@@ -71,6 +71,8 @@ All node class names and display names have been changed from the original repos
 - Utility
   - ControlAltAI: Text Bridge (New, June 2025)
 
+<a id="controlaltai-megapixel-calculator"></a>
+
 ### ControlAltAI: Megapixel Calculator
 
 The ControlAltAI: Megapixel Calculator is designed to determine the optimal image resolution for outputs generated using the Flux model, which is notably more oriented towards megapixels. Unlike traditional methods that rely on standard SDXL resolutions, this calculator operates based on user-specified megapixel inputs. Users can select their desired megapixel count, ranging from 0.1 to 2.0 megapixels, and aspect ratio. The calculator then provides the exact image dimensions necessary for optimal performance with the Flux model. This approach ensures that the generated images meet specific quality and size requirements tailored to the user's needs. Additionally, while the official limit is 2.0 megapixels, during testing, I have successfully generated images at higher resolutions, indicating the model's flexibility in accommodating various image dimensions without compromising quality.
@@ -80,6 +82,8 @@ The ControlAltAI: Megapixel Calculator is designed to determine the optimal imag
 - **Custom Ratio:** Custom Ratio is now supported. Enable or disable the Custom Ratio and input any ratio. (Example: 4:9).
 - **Preview:** The preview node is just a visual representation of the ratio.
 - **Divisible By:** You can now choose the divisibility by 8/16/32/64. By default, it is 64. To get fine-tuned results, choose divisibility by 8. Divisibility by 32/64 is recommended for Flux Dev 1.
+
+<a id="controlaltai-advanced-sampler"></a>
 
 ### ControlAltAI: Advanced Sampler
 
@@ -91,6 +95,8 @@ The ControlAltAI: Advanced Sampler node combines the functionality of the Custom
 - **Latent Compatibility:** Use SD3 Empty Latent Image only. The normal empty latent image node is not compatible.
 
 <img src="png/Advanced%20Sampler.png" width="400" alt="ControlAltAI: Advanced Sampler">
+
+<a id="controlaltai-union-controlnet-apply"></a>
 
 ### ControlAltAI: Union ControlNet Apply
 
@@ -122,12 +128,16 @@ Results: (Canny and Depth Examples not included. They are straightforward.)<br><
 
 **Shakker Labs & InstantX Flux ControlNet Union Pro Model Download:** <a href="https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro">Hugging Face Link</a>
 
+<a id="controlaltai-get-image-size-ratio"></a>
+
 ### ControlAltAI: Get Image Size Ratio
 This node is designed to get the image resolution in width, height, and ratio. The node can be further connected to the ControlAltAI: Megapixel Calculator. To do so, follow the following steps:
 - Right-click on the ControlAltAI: Megapixel Calculator -- > Convert widget to input -- > Convert custom_aspect_ratio to input.
 - Connect Ratio output to custom_aspect_ratio input.
 
 <img src="png/Get%20Image%20Size%20Ratio.png" width="400" alt="ControlAltAI: Get Image Size Ratio">
+
+<a id="controlaltai-integer-settings"></a>
 
 ### ControlAltAI: Integer Settings
 This node is designed to give output as a raw value of 1 or 2 integers. Enable = 2, Disable = 1.
@@ -136,15 +146,21 @@ Use case: This can be set up before a two-way switch, allowing workflow logical 
 
 <img src="png/Integer%20Settings.png" width="400" alt="ControlAltAI: Integer Settings">
 
+<a id="controlaltai-integer-settings-advanced"></a>
+
 ### ControlAltAI: Integer Settings Advanced
 This node is designed to give output as a raw value of 1, 2 or 3 integers. Only one integer output can be enabled at a time. Connect this node with the new ControlAltAI: Switch (Three Way) for logical control.
 
 <img src="png/Integer%20Settings%20Advanced.png" width="400" alt="ControlAltAI: Integer Settings Advanced">
 
-### ControlAltAI: Switch (Two Way) / ControlAltAI: Switch (Three Way)
+<a id="controlaltai-switch-two-way"></a>
+
+### ControlAltAI: Switch (Two Way) / <a id="controlaltai-switch-three-way"></a> ControlAltAI: Switch (Three Way)
 Unlike traditional switches, which accept only one type of input, these switches will accept multiple input types and pass through those inputs if connected to the correct output. Now seamlessly connect ControlAltAI: Switch (Two Way) with the ControlAltAI: Integer Settings and the ControlAltAI: Switch (Three Way) with the ControlAltAI: Integer Settings Advanced Nodes.
 
 <img src="png/ControlAltAI%20Switch.png" width="400" alt="ControlAltAI: Switch (Two Way) / ControlAltAI: Switch (Three Way)">
+
+<a id="controlaltai-perturbation-texture"></a>
 
 ### ControlAltAI: Perturbation Texture
 This node adds realistic texture overlays to images using advanced noise generation techniques. This node is particularly useful for enhancing portraits, adding film grain effects, or creating natural surface textures. This is an advanced version of the ControlAltAI: Noise Plus Blend Node. The node generates multi-channel noise patterns that respect the original image's color distribution, creating realistic textures that enhance rather than overpower the source material. Can be used pre/post upscale (pixel-to-pixel). 
@@ -163,6 +179,8 @@ Node can be used with or without a mask.
 - Film Grain: Adds cinematic noise — great for final renders or creative film looks.
 - Skin Pore: Subtle realism — best for **close-ups** or portraits needing natural facial texture.
 - Fine Details: Emphasizes high-frequency textures — perfect for mechanical, fabric, or intricate object renders.
+
+<a id="controlaltai-text-bridge"></a>
 
 ### ControlAltAI: Text Bridge
 Utility node that provides flexible text input/output management with manual editing capabilities. This node serves as a text processing hub, accepting text from other nodes while allowing for manual overrides and edits.
