@@ -34,6 +34,8 @@ This repository provides **eleven custom nodes** for ComfyUI:
 
     <img src="png/Florence2.png" width="400">
 
+9. **ControlAltAI** (11 nodes) — Flux-oriented utilities (sampler, Union ControlNet, logic switches, megapixel calc, etc.). Details: **[nodes/controlaltai/controlalttai.md](nodes/controlaltai/controlalttai.md)**
+
 ---
 
 ## Features (V1 - Legacy Node)
@@ -207,6 +209,10 @@ python -m pip install -r requirements.txt
 ```
 
 Florence-2–specific packages include **transformers**, **accelerate**, **peft**, **timm**, **matplotlib**, and **Pillow**, in addition to **nunchaku** used elsewhere in this pack.
+
+## ControlAltAI nodes
+
+Integrated from [ControlAltAI-Nodes](https://github.com/StartHua/ComfyUI-ControlAltAI-Nodes) (Python 3.13–compatible fork). Node list, parameters, and screenshots: **[nodes/controlaltai/controlalttai.md](nodes/controlaltai/controlalttai.md)** (see also [Nodes](nodes/controlaltai/controlalttai.md#nodes) in that file). Frontend helper for **Integer Settings Advanced**: `js/integer_settings_advanced.js`.
 
 ---
 
