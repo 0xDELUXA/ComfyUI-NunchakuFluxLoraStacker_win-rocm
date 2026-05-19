@@ -1,0 +1,15 @@
+# Python 3.13 Compatible Requirements for ControlAltAI-Nodes
+# These are the dependencies that should be installed in your ComfyUI environment
+
+# Core dependencies (usually provided by ComfyUI)
+torch>=2.0.0
+torchvision>=0.15.0
+numpy>=1.21.0
+pillow>=9.0.0
+einops>=0.6.0
+
+# Optional dependencies
+xformers>=0.0.20  # For attention optimization
+
+# Note: ComfyUI and its dependencies should be installed separately
+# This file is provided for reference only
