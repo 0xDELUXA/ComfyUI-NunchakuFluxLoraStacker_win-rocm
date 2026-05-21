@@ -29,6 +29,7 @@ env/
 .vscode/
 .idea/
 .cursor/
+do_push.ps1
 *.swp
 *.swo
 *~
