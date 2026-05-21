@@ -2,6 +2,8 @@
 
 ## Release History
 
+- v1.32 – ControlAltAI: Integrated ControlAltAI utility nodes under `nodes/controlaltai/` (upstream lineage [gseth/ControlAltAI-Nodes](https://github.com/gseth/ControlAltAI-Nodes), MIT). **Integration rationale:** these nodes were first maintained in a **separate Python 3.13–compatible fork repository**; they are **merged into this pack** so users manage **one fewer custom-node repository** (clone, pin, and update) while keeping the same node set. Pack registration in root `__init__.py`; README ControlAltAI section (after Florence-2) with node details in [nodes/controlaltai/controlalttai.md](nodes/controlaltai/controlalttai.md) only; frontend helper `js/integer_settings_advanced.js` for Integer Settings Advanced. ([Release Notes](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.32))
+
 - v1.31 – Florence-2: Integrated Florence-2 VLM nodes under `nodes/florence2/` (Sage Attention 2/3 and Transformers 5.x loader path; upstream lineage [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2) merged into this repo). README node overview (11 nodes), Florence-2 section, screenshot `png/Florence2.png`, Credits, and License note for MIT subtree `nodes/florence2/LICENSE`. ([Release Notes](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.31))
 
 - v1.30 – Color Filter: Added `ColorFilter` node (`nodes/color_filter/`) to remove monochrome / black-and-white wording from caption and tag strings (e.g. Florence-2, WD14 Tagger); README section and screenshot. ([Release Notes](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.30))
