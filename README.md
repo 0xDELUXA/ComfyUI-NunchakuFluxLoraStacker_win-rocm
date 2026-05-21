@@ -34,7 +34,7 @@ This repository provides **eleven custom nodes** for ComfyUI:
 
     <img src="png/Florence2.png" width="400">
 
-9. **ControlAltAI** (11 nodes) — was a separate Python 3.13 fork repo; now under `nodes/controlaltai/` (see **[ControlAltAI nodes](#controlaltai-nodes)** below).
+9. **ControlAltAI** (11 nodes) — maintainer’s Python 3.13 fork, now under `nodes/controlaltai/` (see **[ControlAltAI nodes](#controlaltai-nodes)** below).
 
 ---
 
@@ -179,7 +179,7 @@ Vision-language nodes built from the Florence-2 model stack bundled under `nodes
 
 ### Upstream and integration
 
-The Florence-2 implementation here started from **[kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)**. A fork was maintained separately to add **Sage Attention 3** support and to track **current Transformers** (5.x) APIs; that work is now **merged into this repository** under `nodes/florence2/` so you do not need a second custom-node repo—fewer repositories to clone, update, and pin in `requirements.txt`.
+The Florence-2 implementation here started from **[kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)**. A separate fork was maintained for **Sage Attention 3** support and **Transformers 5.x** APIs; that fork is **merged into this repository** under `nodes/florence2/` **to reduce the maintainer’s own separate-repo maintenance**.
 
 ### Compatibility
 
@@ -216,7 +216,7 @@ Utility nodes from the ControlAltAI family (category **ControlAltAI utils** in C
 
 ### Upstream and integration
 
-These nodes trace to **[gseth/ControlAltAI-Nodes](https://github.com/gseth/ControlAltAI-Nodes)** (MIT). **At first, a Python 3.13–compatible fork was maintained in its own separate repository.** To **reduce how many repositories** you clone, update, and pin, that fork is **merged into this pack** under `nodes/controlaltai/`—you do not need a second custom-node repo for ControlAltAI.
+These nodes trace to **[gseth/ControlAltAI-Nodes](https://github.com/gseth/ControlAltAI-Nodes)** (MIT). The maintainer’s **Python 3.13–compatible fork** of those nodes is **merged into this pack** under `nodes/controlaltai/` **to reduce the maintainer’s own separate-repo maintenance** (same node set).
 
 ### Node reference
 
