@@ -2,7 +2,7 @@
 
 ## Release History
 
-- v1.32 – ControlAltAI: Integrated ControlAltAI utility nodes under `nodes/controlaltai/` (upstream [gseth/ControlAltAI-Nodes](https://github.com/gseth/ControlAltAI-Nodes), MIT). **My Python 3.13–compatible fork** of those nodes is included under `nodes/controlaltai/` in this pack (same node set), **to reduce my own separate-repo maintenance**. Pack registration in root `__init__.py`; README ControlAltAI section (after Florence-2) with node details in [nodes/controlaltai/controlalttai.md](nodes/controlaltai/controlalttai.md) only; frontend helper `js/integer_settings_advanced.js` for Integer Settings Advanced.
+- v1.32 – ControlAltAI: Integrated ControlAltAI utility nodes under `nodes/controlaltai/` (upstream [gseth/ControlAltAI-Nodes](https://github.com/gseth/ControlAltAI-Nodes), MIT). **My Python 3.13–compatible fork** of those nodes is included in this pack (same node set), **to reduce my own separate-repo maintenance**. Pack registration in root `__init__.py`; README [ControlAltAI nodes](../README.md#controlaltai-nodes) section (after Florence-2); node details in `nodes/controlaltai/controlalttai.md` only; frontend helper `js/integer_settings_advanced.js` for Integer Settings Advanced.
 
 - v1.31 – Florence-2: Integrated Florence-2 VLM nodes under `nodes/florence2/` (Sage Attention 2/3 and Transformers 5.x loader path; upstream lineage [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2) merged into this repo). README node overview (11 nodes), Florence-2 section, screenshot `png/Florence2.png`, Credits, and License note for MIT subtree `nodes/florence2/LICENSE`. ([Release Notes](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.31))
 
