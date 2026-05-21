@@ -269,4 +269,3 @@ See [Changelog](md/CHANGELOG.md) for the full release history.
 - Fast Groups Bypasser V2 is ported from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) and is licensed under **MIT License**
 - Florence-2 code under `nodes/florence2/` is derived from [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2) and is licensed under the **MIT License**; see `nodes/florence2/LICENSE` for the full text and copyright notice for that subtree.
 - ControlAltAI code under `nodes/controlaltai/` — **MIT License** (see [ControlAltAI nodes](#controlaltai-nodes))
-
