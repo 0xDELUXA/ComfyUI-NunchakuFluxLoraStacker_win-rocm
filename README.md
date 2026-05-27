@@ -26,7 +26,7 @@ This repository provides **eleven custom nodes** for ComfyUI:
     
     <img src="png/loraana.png" width="400">
 
-7. **Color Filter** (`ColorFilter`) - Strip monochrome / black-and-white wording from caption text produced by vision-language tagging (e.g. Florence-2, WD14 Tagger) before feeding prompts to downstream nodes
+7. **Color Filter** (`ColorFilter`) - Strip monochrome / black-and-white wording (supporting both built-in patterns and custom user-defined exclude words) from caption text produced by vision-language tagging (e.g. Florence-2, WD14 Tagger) before feeding prompts to downstream nodes
     
     <img src="png/colorfilter.png" width="400">
 
