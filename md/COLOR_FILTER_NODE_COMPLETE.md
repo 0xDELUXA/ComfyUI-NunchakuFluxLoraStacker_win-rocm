@@ -52,6 +52,7 @@ class ColorFilter:
         return {
             "required": {
                 "text": ("STRING", {"multiline": True}),
+                "exclude_words": ("STRING", {"default": ""}),
             }
         }
 
@@ -60,7 +61,7 @@ class ColorFilter:
     FUNCTION = "filter_text"
     CATEGORY = "Text/Filter"
 
-    def filter_text(self, text):
+    def filter_text(self, text, exclude_words=""):
         keywords_to_remove = [
             r"\bwhite and black\b",
             r"\bblack and white\b",
@@ -79,6 +80,26 @@ class ColorFilter:
             r"無彩色",
             r"セピア",
         ]
+
+        user_patterns = []
+        if exclude_words:
+            # カンマまたは改行で分割
+            for word in re.split(r'[,\n]', exclude_words):
+                word = word.strip()
+                if not word:
+                    continue
+                
+                # 正規表現のエスケープ処理
+                escaped_word = re.escape(word)
+                
+                # ASCII英数字で始まる/終わる場合のみ単語の境界(\b)を付与する
+                start_boundary = r"\b" if re.match(r'^[a-zA-Z0-9_]', word) else ""
+                end_boundary = r"\b" if re.search(r'[a-zA-Z0-9_]$', word) else ""
+                
+                pattern = f"{start_boundary}{escaped_word}{end_boundary}"
+                user_patterns.append(pattern)
+
+        keywords_to_remove = user_patterns + keywords_to_remove
 
         filtered_text = text
         for keyword in keywords_to_remove:
@@ -183,7 +204,7 @@ logger.info(f"ComfyUI-NunchakuFluxLoraStacker: Loaded {len(NODE_CLASS_MAPPINGS)}
 
 | Attribute | Value | Meaning |
 |-----------|--------|---------|
-| `INPUT_TYPES` | One required `STRING`, `multiline: True` | Users paste or edit long captions/tags in the node UI. |
+| `INPUT_TYPES` | Two required `STRING` parameters: `text` (multiline) and `exclude_words` (single-line). | Users input the raw text and optional custom words to exclude. |
 | `RETURN_TYPES` | `("STRING",)` | Single string output. |
 | `RETURN_NAMES` | `("filtered_text",)` | Output socket label in the graph. |
 | `FUNCTION` | `"filter_text"` | ComfyUI invokes `ColorFilter.filter_text(...)`. |

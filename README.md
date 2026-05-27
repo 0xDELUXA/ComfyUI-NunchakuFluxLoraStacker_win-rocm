@@ -243,11 +243,13 @@ Image captioning and tagging nodes (such as **Florence-2** or **WD14 Tagger**) o
 | Port | Type | Description |
 |------|------|-------------|
 | `text` | `STRING` (multiline) | Raw caption or tag string from upstream analysis nodes. |
-| `filtered_text` | `STRING` | Same text with monochrome-related phrases removed; consecutive whitespace is normalized to single spaces (newlines become spaces). |
+| `exclude_words` | `STRING` (single-line) | Optional manual words/phrases to remove (separated by commas or newlines). Default is empty. |
+| `filtered_text` | `STRING` | Same text with built-in and user-defined words removed; consecutive whitespace is normalized to single spaces (newlines become spaces). |
 
 ### Behaviour notes
 
 - Matching uses regular expressions (word-boundary aware for common English terms; non-Latin monochrome-related literals are matched as substrings). Typical English removals include e.g. `black and white`, `monochrome`, and `grayscale`; the full pattern set is defined in `nodes/color_filter/color_filter.py`.
+- Custom exclude words specified in `exclude_words` are parsed dynamically (split by commas and newlines), escaped to prevent regex errors, and matched case-insensitively. They are prioritized and matched before the built-in hardcoded words.
 - The node lives under category **Text/Filter** in the ComfyUI menu.
 
 ---
