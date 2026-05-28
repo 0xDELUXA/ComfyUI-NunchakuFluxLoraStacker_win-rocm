@@ -83,16 +83,16 @@ class ColorFilter:
 
         user_patterns = []
         if exclude_words:
-            # カンマまたは改行で分割
+            # Split by comma or newline
             for word in re.split(r'[,\n]', exclude_words):
                 word = word.strip()
                 if not word:
                     continue
                 
-                # 正規表現のエスケープ処理
+                # Escape string for regex
                 escaped_word = re.escape(word)
                 
-                # ASCII英数字で始まる/終わる場合のみ単語の境界(\b)を付与する
+                # Append word boundary (\b) only if the word starts/ends with ASCII alphanumeric characters
                 start_boundary = r"\b" if re.match(r'^[a-zA-Z0-9_]', word) else ""
                 end_boundary = r"\b" if re.search(r'[a-zA-Z0-9_]$', word) else ""
                 
