@@ -263,7 +263,7 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 
 ## 发布历史
 
-详见 [更新日志](../md/CHANGELOG.md) 获取完整的发布历史。
+详见 [更新日志](CHANGELOG.md) 获取完整的发布历史。
 
 ## 致谢
 
