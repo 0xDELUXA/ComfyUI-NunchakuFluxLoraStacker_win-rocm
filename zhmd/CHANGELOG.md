@@ -1,0 +1,50 @@
+# 更新日志
+
+<table align="center">
+  <tr>
+    <td align="center" bgcolor="#e5e7eb" width="88" height="36"><a href="../md/CHANGELOG.md"><font color="#4b5563"><b>EN</b></font></a></td>
+    <td align="center" bgcolor="#d4465e" width="88" height="36"><font color="#ffffff"><b>中文</b></font></td>
+  </tr>
+</table>
+
+## 发布历史
+
+- v1.33 – Color Filter: 改进了用户自定义 `exclude_words` 的解析，根据单词是否包含 ASCII 字母数字字符来动态处理单词边界 (`\b`)，从而防止正则表达式错误并避免日语文本和特殊字符的匹配遗漏。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.33))
+
+- v1.32 – ControlAltAI: 在 `nodes/controlaltai/` 下集成了 ControlAltAI 工具节点（上游 https://github.com/gseth/ControlAltAI-Nodes，MIT）。此工具包中包含了该节点的兼容 Python 3.13 的个人分支（相同节点集），以减少维护多个独立仓库的精力。在根目录 `__init__.py` 中进行了注册；在 README 中添加了 ControlAltAI 部分（位于 Florence-2 之后）；节点详细信息仅记录在 [nodes/controlaltai/controlalttai.md](../nodes/controlaltai/controlalttai.md) 中；为 Integer Settings Advanced 提供了前端辅助脚本 `js/integer_settings_advanced.js`。
+
+- v1.31 – Florence-2: 在 `nodes/florence2/` 下集成了 Florence-2 VLM 节点（支持 Sage Attention 2/3 和 Transformers 5.x 加载路径；合并了上游源自 [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2) 的分支）。更新了 README 中的节点概览（11个节点）、Florence-2 部分、截图 `../png/Florence2.png`、致谢以及 MIT 子目录 `nodes/florence2/LICENSE` 的许可证说明。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.31))
+
+- v1.30 – Color Filter: 添加了 `ColorFilter` 节点 (`nodes/color_filter/`)，用于从描述和标签字符串（例如 Florence-2、WD14 Tagger）中移除单色/黑白相关词语；更新了 README 部分和截图。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.30))
+
+- v1.29 – LoRA Loader V2 更新: 在 FLUX LoRA Loader V2、LoRA Stacker V2 和 SDNQ LoRA Stacker V2 中启用了负数 LoRA 强度值（最小值/最大值：-100.0 到 100.0），以匹配标准的 ComfyUI 行为。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.29))
+
+- v1.28 – Nunchaku Flux1 PulID: 发布了针对影响上游 Nunchaku Flux1 PulID 节点的错误的缓解措施；详细信息已在发行说明中发布。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.28))
+
+- v1.27 – Model Patch Loader: 修复了由 ComfyUI 更新引起的错误（CPU 卸载 / CoreModelPatcher）。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.27))
+
+- v1.26 – Model Patch Loader: 修复了 Z-Image ControlNet 矩阵乘法形状错误；从权重文件（checkpoint）推断 control_in_dim，并在加载 state_dict 中包含仅权重文件的键，以便在延迟初始化（lazy init）下加载嵌入器（embedder）权重。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.26))
+
+- [v1.25](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.25) – Universal LoRA Analyzer、图像加载（Load Image）节点、SAM3 集成；更新了 README 中的节点文档和结构。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.25))
+
+- [v1.24](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.24) – 修复了 ComfyUI-nunchaku 1.1.0 下 LoRA 不工作的问题: 解决了更新到 ComfyUI-nunchaku 1.1.0 后，LoRA 未应用于最终图像输出的问题。该修复确保了正确的 MODEL 对象克隆和状态保留。
+
+- v1.21 – Z-Image ControlNet Union 2.1 支持: 为 Z-Image ControlNet 添加了动态层数检测以支持 Union 2.1 模型。
+
+- v1.18 – SDNQ LoRA Stacker V2: 为 SDNQ 量化模型添加了专用的 SDNQ LoRA Stacker V2 节点，带有动态 10 槽位 UI（与 [comfyui-sdnq-splited](https://github.com/ussoewwin/comfyui-sdnq-splited) 配合使用）。修复了 Z-Image ControlNet 加载以支持 Union 2.0 权重文件，并对尺寸不匹配进行了过滤。
+
+- v1.17 – Model Patch Loader: 添加了 ModelPatchLoaderCustom 节点，支持 CPU 卸载以加载 ControlNet 和特征投影器补丁。
+
+- v1.16 – LoRA Stacker V2: 为标准 SD 模型（SDXL、Flux、WAN2.2）添加了通用 LoRA 加载器，带有动态 10 槽位 UI。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.16))
+
+- v1.15 – FastGroupsBypasserV2 修复: 修复了关键的控件更新 bug，即第二次属性更改需要按 F5 刷新。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.15))
+
+- v1.14 – 节点简化: 移除了测试节点 (x1-x9)，仅保留 FLUX LoRA Loader V2 (x10) 作为正式节点。
+
+- v1.13 – 清理发布: 从仓库中移除了所有备份文件，将 FluxLoraMultiLoader_10 的显示名称更新为 "FLUX LoRA Loader V2"。
+
+- v1.12 – V2 节点发布: 带有动态下拉框 UI 的 FLUX LoRA Loader V2 以及 Fast Groups Bypasser V2。
+
+- v1.11 – 修正了 README 中的克隆命令，以使用规范的仓库 URL。 ([问题 #3](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/issues/3))
+
+- [v1.10](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.10) – LoRA 加载器修复 - 完整版本

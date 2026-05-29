@@ -1,5 +1,12 @@
 # Changelog
 
+<table align="center">
+  <tr>
+    <td align="center" bgcolor="#3478ca" width="88" height="36"><font color="#ffffff"><b>EN</b></font></td>
+    <td align="center" bgcolor="#e5e7eb" width="88" height="36"><a href="../zhmd/CHANGELOG.md"><font color="#4b5563"><b>中文</b></font></a></td>
+  </tr>
+</table>
+
 ## Release History
 
 - v1.33 – Color Filter: Improved user-defined `exclude_words` parsing to dynamically handle word boundaries (`\b`) based on whether words contain ASCII alphanumeric characters, preventing regex errors and missed matches for Japanese text and special characters. ([Release Notes](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.33))
