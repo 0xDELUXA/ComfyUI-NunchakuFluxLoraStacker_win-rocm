@@ -227,7 +227,7 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 
 ### 节点参考
 
-完整的节点列表、参数和截图：**[nodes/controlaltai/controlalttai.md](../nodes/controlaltai/controlalttai.md)**。
+完整的节点列表、参数和截图：**[zhmd/controlalttai.md](controlalttai.md)**。
 
 **Integer Settings Advanced** 的前端辅助：`js/integer_settings_advanced.js`（从包根目录 `js/` 文件夹提供）。
 

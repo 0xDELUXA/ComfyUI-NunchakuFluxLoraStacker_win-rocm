@@ -11,7 +11,7 @@
 
 - v1.33 – Color Filter: 改进了用户自定义 `exclude_words` 的解析，根据单词是否包含 ASCII 字母数字字符来动态处理单词边界 (`\b`)，从而防止正则表达式错误并避免日语文本和特殊字符的匹配遗漏。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.33))
 
-- v1.32 – ControlAltAI: 在 `nodes/controlaltai/` 下集成了 ControlAltAI 工具节点（上游 https://github.com/gseth/ControlAltAI-Nodes，MIT）。此工具包中包含了该节点的兼容 Python 3.13 的个人分支（相同节点集），以减少维护多个独立仓库的精力。在根目录 `__init__.py` 中进行了注册；在 README 中添加了 ControlAltAI 部分（位于 Florence-2 之后）；节点详细信息仅记录在 [nodes/controlaltai/controlalttai.md](../nodes/controlaltai/controlalttai.md) 中；为 Integer Settings Advanced 提供了前端辅助脚本 `js/integer_settings_advanced.js`。
+- v1.32 – ControlAltAI: 在 `nodes/controlaltai/` 下集成了 ControlAltAI 工具节点（上游 https://github.com/gseth/ControlAltAI-Nodes，MIT）。此工具包中包含了该节点的兼容 Python 3.13 的个人分支（相同节点集），以减少维护多个独立仓库的精力。在根目录 `__init__.py` 中进行了注册；在 README 中添加了 ControlAltAI 部分（位于 Florence-2 之后）；节点详细信息仅记录在 [zhmd/controlalttai.md](controlalttai.md) 中；为 Integer Settings Advanced 提供了前端辅助脚本 `js/integer_settings_advanced.js`。
 
 - v1.31 – Florence-2: 在 `nodes/florence2/` 下集成了 Florence-2 VLM 节点（支持 Sage Attention 2/3 和 Transformers 5.x 加载路径；合并了上游源自 [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2) 的分支）。更新了 README 中的节点概览（11个节点）、Florence-2 部分、截图 `../png/Florence2.png`、致谢以及 MIT 子目录 `nodes/florence2/LICENSE` 的许可证说明。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.31))
 
