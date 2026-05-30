@@ -101,11 +101,21 @@ class ColorFilter:
 
         keywords_to_remove = user_patterns + keywords_to_remove
 
+        # Sort patterns by the length of the actual matched text in descending order
+        # to ensure longer phrases (e.g. "blonde hair") are removed before shorter sub-words (e.g. "blonde")
+        keywords_to_remove.sort(
+            key=lambda p: len(re.sub(r"\\(.)", r"\1", p.replace(r"\b", "").replace(r"\ ", " "))),
+            reverse=True
+        )
+
         filtered_text = text
         for keyword in keywords_to_remove:
             filtered_text = re.sub(keyword, "", filtered_text, flags=re.IGNORECASE)
 
-        filtered_text = re.sub(r"\s+", " ", filtered_text).strip()
+        # Collapse multiple commas, spaces, and strip leading/trailing commas and spaces
+        filtered_text = re.sub(r",\s*,", ",", filtered_text)
+        filtered_text = re.sub(r"\s+", " ", filtered_text)
+        filtered_text = filtered_text.strip(" ,")
 
         return (filtered_text,)
 ```
