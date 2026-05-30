@@ -9,7 +9,7 @@
 
 ## 发布历史
 
-- v1.34 – Color Filter: 修复了由于过期的预编译字节码缓存（`__pycache__`）导致自定义排除词失效的问题；并实现了递归逗号折叠算法，以正确处理移除多个连续单词时的格式化问题。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.34))
+- v1.34 – Color Filter: 修复了由于过期的预编译字节码缓存（`__pycache__`）导致自定义排除词失效的问题；并实现了递归逗号折叠算法，以正确处理移除多个连续单词时的格式化问题。 ([发行说明](v1.34.md))
 
 - v1.33 – Color Filter: 改进了用户自定义 `exclude_words` 的解析，根据单词是否包含 ASCII 字母数字字符来动态处理单词边界 (`\b`)，从而防止正则表达式错误并避免日语文本和特殊字符的匹配遗漏。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.33))
 
