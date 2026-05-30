@@ -73,7 +73,10 @@ class ColorFilter:
             filtered_text = re.sub(keyword, "", filtered_text, flags=re.IGNORECASE)
 
         # Collapse multiple commas, spaces, and strip leading/trailing commas and spaces
-        filtered_text = re.sub(r",\s*,", ",", filtered_text)
+        prev = None
+        while prev != filtered_text:
+            prev = filtered_text
+            filtered_text = re.sub(r",\s*,", ",", filtered_text)
         filtered_text = re.sub(r"\s+", " ", filtered_text)
         filtered_text = filtered_text.strip(" ,")
 
