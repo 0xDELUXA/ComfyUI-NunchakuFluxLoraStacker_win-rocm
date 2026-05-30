@@ -9,6 +9,8 @@
 
 ## Release History
 
+- v1.34 – Color Filter: Fixed an issue where custom exclusion terms failed to match due to stale precompiled bytecode caches (`__pycache__`), and implemented recursive comma-collapsing to properly handle formatting when multiple consecutive words are stripped out. ([Release Notes](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.34))
+
 - v1.33 – Color Filter: Improved user-defined `exclude_words` parsing to dynamically handle word boundaries (`\b`) based on whether words contain ASCII alphanumeric characters, preventing regex errors and missed matches for Japanese text and special characters. ([Release Notes](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.33))
 
 - v1.32 – ControlAltAI: Integrated ControlAltAI utility nodes under `nodes/controlaltai/` (upstream https://github.com/gseth/ControlAltAI-Nodes, MIT). **My Python 3.13–compatible fork** of those nodes is included in this pack (same node set), **to reduce my own separate-repo maintenance**. Pack registration in root `__init__.py`; README ControlAltAI section (after Florence-2); node details in [nodes/controlaltai/controlalttai.md](../nodes/controlaltai/controlalttai.md) only; frontend helper `js/integer_settings_advanced.js` for Integer Settings Advanced.

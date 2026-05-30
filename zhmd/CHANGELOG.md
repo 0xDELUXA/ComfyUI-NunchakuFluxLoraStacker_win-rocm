@@ -9,6 +9,8 @@
 
 ## 发布历史
 
+- v1.34 – Color Filter: 修复了由于过期的预编译字节码缓存（`__pycache__`）导致自定义排除词失效的问题；并实现了递归逗号折叠算法，以正确处理移除多个连续单词时的格式化问题。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.34))
+
 - v1.33 – Color Filter: 改进了用户自定义 `exclude_words` 的解析，根据单词是否包含 ASCII 字母数字字符来动态处理单词边界 (`\b`)，从而防止正则表达式错误并避免日语文本和特殊字符的匹配遗漏。 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.33))
 
 - v1.32 – ControlAltAI: 在 `nodes/controlaltai/` 下集成了 ControlAltAI 工具节点（上游 https://github.com/gseth/ControlAltAI-Nodes，MIT）。此工具包中包含了该节点的兼容 Python 3.13 的个人分支（相同节点集），以减少维护多个独立仓库的精力。在根目录 `__init__.py` 中进行了注册；在 README 中添加了 ControlAltAI 部分（位于 Florence-2 之后）；节点详细信息仅记录在 [zhmd/controlalttai.md](controlalttai.md) 中；为 Integer Settings Advanced 提供了前端辅助脚本 `js/integer_settings_advanced.js`。
