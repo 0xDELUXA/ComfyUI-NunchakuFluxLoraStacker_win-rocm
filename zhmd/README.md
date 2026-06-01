@@ -45,7 +45,7 @@
 
 10. **CCSR**（三个节点：`DownloadAndLoadCCSRModel`、`CCSR_Model_Select`、`CCSR_Upscale`）— 加载 CCSR 模型（Hugging Face 自动下载或本地检查点），支持分块采样与颜色校正，执行高质量图像超分辨率放大（参见下方 **[CCSR 节点](#ccsr-节点)**）。
     
-    <img src="../png/ccsr.png?v=2" width="400">
+    <img src="../png/ccsr.png" width="400">
 
 ---
 
