@@ -24,6 +24,7 @@ from .nodes.lora_analyzer_node import NODE_CLASS_MAPPINGS as ANALYZER_NODES, NOD
 from .nodes.color_filter import NODE_CLASS_MAPPINGS as COLOR_FILTER_NODES, NODE_DISPLAY_NAME_MAPPINGS as COLOR_FILTER_NAMES
 from .nodes.florence2 import NODE_CLASS_MAPPINGS as FLORENCE2_NODES, NODE_DISPLAY_NAME_MAPPINGS as FLORENCE2_NAMES
 from .nodes.controlaltai import NODE_CLASS_MAPPINGS as CONTROLALTAI_NODES, NODE_DISPLAY_NAME_MAPPINGS as CONTROLALTAI_NAMES
+from .nodes.CCSR import NODE_CLASS_MAPPINGS as CCSR_NODES, NODE_DISPLAY_NAME_MAPPINGS as CCSR_NAMES
 
 # Add version to classes
 NunchakuFluxLoraStack.__version__ = __version__
@@ -34,6 +35,8 @@ for node_class in STANDARD_LORA_NODES.values():
 for node_class in SDNQ_LORA_NODES.values():
     node_class.__version__ = __version__
 for node_class in FLORENCE2_NODES.values():
+    node_class.__version__ = __version__
+for node_class in CCSR_NODES.values():
     node_class.__version__ = __version__
 
 # Node mappings
@@ -48,6 +51,7 @@ NODE_CLASS_MAPPINGS = {
     **COLOR_FILTER_NODES,
     **FLORENCE2_NODES,
     **CONTROLALTAI_NODES,
+    **CCSR_NODES,
 }
 
 # Display name mappings
@@ -62,6 +66,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     **COLOR_FILTER_NAMES,
     **FLORENCE2_NAMES,
     **CONTROLALTAI_NAMES,
+    **CCSR_NAMES,
 }
 
 # Register JavaScript extensions
