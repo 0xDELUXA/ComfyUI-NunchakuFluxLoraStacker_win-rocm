@@ -43,6 +43,8 @@
 
 9. **ControlAltAI**（11 个节点）— 我的 Python 3.13 分支，现位于 `nodes/controlaltai/`（参见下方 **[ControlAltAI 节点](#controlaltai-节点)**）。
 
+10. **CCSR**（三个节点：`DownloadAndLoadCCSRModel`、`CCSR_Model_Select`、`CCSR_Upscale`）— 加载 CCSR 模型（Hugging Face 自动下载或本地检查点），支持分块采样与颜色校正，执行高质量图像超分辨率放大（参见下方 **[CCSR 节点](#ccsr-节点)**）。
+
 ---
 
 ## 功能 (V1 - 旧版节点)
@@ -258,6 +260,20 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 - 匹配使用正则表达式（常见英文术语具有词边界感知；非拉丁单色相关文字作为子字符串匹配）。典型的英文移除包括例如 `black and white`、`monochrome` 和 `grayscale`；完整的模式集在 `nodes/color_filter/color_filter.py` 中定义。
 - 在 `exclude_words` 中指定的自定义排除词会被动态解析（按逗号和换行分割）、转义以防止正则表达式错误，并进行不区分大小写的匹配。它们被优先处理，在内置硬编码词之前匹配。
 - 该节点位于 ComfyUI 菜单的 **Text/Filter** 分类下。
+
+---
+
+## CCSR 节点
+
+基于 CCSR (Creative Content Super-Resolution) 架构的图像超分辨率放大节点，位于 `nodes/CCSR/` 下。它们在 ComfyUI 菜单的 **CCSR** 分类下显示。
+
+### 节点参考
+
+| 节点 | 角色 |
+|------|------|
+| **DownloadAndLoadCCSRModel** | 从 Hugging Face 下载预训练的 CCSR 模型（`real-world_ccsr-fp16.safetensors` / `real-world_ccsr-fp32.safetensors`），或者在本地已存在于 `models/CCSR/` 下时直接加载。返回 **`ccsr_model`** (`CCSRMODEL`)。 |
+| **CCSR_Model_Select** | 从标准 ComfyUI `checkpoints` 目录选择并加载本地 CCSR 权重文件。返回 **`ccsr_model`** (`CCSRMODEL`)。 |
+| **CCSR_Upscale** | 使用已加载的 CCSR 模型执行图像超分辨率放大。支持自定义步数、分块参数控制（`ccsr_tiled_mixdiff` / `ccsr_tiled_vae_gaussian_weights`）以及颜色校正选项（`adain` / `wavelet`）。返回 **`upscaled_image`** (`IMAGE`)。 |
 
 ---
 
