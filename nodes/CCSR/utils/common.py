@@ -6,6 +6,20 @@ from torch import nn
 
 def get_obj_from_str(string: str, reload: bool=False) -> object:
     module, cls = string.rsplit(".", 1)
+    
+    parts = __name__.split(".")
+    prefix = ""
+    if "CCSR" in parts:
+        ccsr_index = parts.index("CCSR")
+        prefix = ".".join(parts[:ccsr_index + 1])
+        
+    if string.startswith("ComfyUI-CCSR."):
+        if prefix:
+            module = module.replace("ComfyUI-CCSR", prefix)
+    elif module.startswith("model.") or module.startswith("ldm.") or module.startswith("utils."):
+        if prefix:
+            module = f"{prefix}.{module}"
+            
     if reload:
         module_imp = importlib.import_module(module)
         importlib.reload(module_imp)
