@@ -83,11 +83,14 @@ def instantiate_from_config(config):
 def get_obj_from_str(string, reload=False):
     module, cls = string.rsplit(".", 1)
     
-    parts = __name__.split(".")
     prefix = ""
-    if "CCSR" in parts:
-        ccsr_index = parts.index("CCSR")
-        prefix = ".".join(parts[:ccsr_index + 1])
+    if __package__:
+        prefix = __package__.rsplit(".", 1)[0]
+    else:
+        parts = __name__.split(".")
+        if "CCSR" in parts:
+            ccsr_index = parts.index("CCSR")
+            prefix = ".".join(parts[:ccsr_index + 1])
         
     if string.startswith("ComfyUI-CCSR."):
         if prefix:
