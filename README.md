@@ -43,6 +43,8 @@ This repository provides **eleven custom nodes** for ComfyUI:
 
 9. **ControlAltAI** (11 nodes) — my Python 3.13 fork, now under `nodes/controlaltai/` (see **[ControlAltAI nodes](#controlaltai-nodes)** below).
 
+10. **CCSR** (three nodes: `DownloadAndLoadCCSRModel`, `CCSR_Model_Select`, `CCSR_Upscale`) — Load CCSR models (Hugging Face auto-download or local checkpoints) and perform high-quality image upscaling with tiled sampling and color correction (see **[CCSR nodes](#ccsr-nodes)** below).
+
 ---
 
 ## Features (V1 - Legacy Node)
@@ -258,6 +260,20 @@ Image captioning and tagging nodes (such as **Florence-2** or **WD14 Tagger**) o
 - Matching uses regular expressions (word-boundary aware for common English terms; non-Latin monochrome-related literals are matched as substrings). Typical English removals include e.g. `black and white`, `monochrome`, and `grayscale`; the full pattern set is defined in `nodes/color_filter/color_filter.py`.
 - Custom exclude words specified in `exclude_words` are parsed dynamically (split by commas and newlines), escaped to prevent regex errors, and matched case-insensitively. They are prioritized and matched before the built-in hardcoded words.
 - The node lives under category **Text/Filter** in the ComfyUI menu.
+
+---
+
+## CCSR nodes
+
+Image upscaling nodes leveraging the CCSR (Creative Content Super-Resolution) architecture, located under `nodes/CCSR/`. They appear under the ComfyUI category **CCSR**.
+
+### Node reference
+
+| Node | Role |
+|------|------|
+| **DownloadAndLoadCCSRModel** | Downloads pre-trained CCSR models (`real-world_ccsr-fp16.safetensors` / `real-world_ccsr-fp32.safetensors`) from Hugging Face or loads them if already present under `models/CCSR/`. Returns **`ccsr_model`** (`CCSRMODEL`). |
+| **CCSR_Model_Select** | Selects and loads a local CCSR checkpoint from the standard ComfyUI `checkpoints` directory. Returns **`ccsr_model`** (`CCSRMODEL`). |
+| **CCSR_Upscale** | Performs image upscaling using the loaded CCSR model. Supports customizable steps, tiling parameter controls (`ccsr_tiled_mixdiff` / `ccsr_tiled_vae_gaussian_weights`), and color correction options (`adain` / `wavelet`). Returns **`upscaled_image`** (`IMAGE`). |
 
 ---
 
