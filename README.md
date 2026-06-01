@@ -45,7 +45,7 @@ This repository provides **eleven custom nodes** for ComfyUI:
 
 10. **CCSR** (three nodes: `DownloadAndLoadCCSRModel`, `CCSR_Model_Select`, `CCSR_Upscale`) — Load CCSR models (Hugging Face auto-download or local checkpoints) and perform high-quality image upscaling with tiled sampling and color correction (see **[CCSR nodes](#ccsr-nodes)** below).
     
-    <img src="png/ccsr.png" width="400">
+    <img src="png/ccsr.png?v=2" width="400">
 
 ---
 
