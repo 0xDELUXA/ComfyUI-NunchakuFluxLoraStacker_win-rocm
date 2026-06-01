@@ -267,6 +267,10 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 
 基于 CCSR (Creative Content Super-Resolution) 架构的图像超分辨率放大节点，位于 `nodes/CCSR/` 下。它们在 ComfyUI 菜单的 **CCSR** 分类下显示。
 
+### 上游和集成
+
+此处的 CCSR 实现源自 **[kijai/ComfyUI-CCSR](https://github.com/kijai/ComfyUI-CCSR)**。为支持最新的 ComfyUI 环境和 **Python 3.13** 维护了一个单独的分支；该分支已**合并到本仓库**的 `nodes/CCSR/` 下，**以减少我自己的独立仓库维护**。
+
 ### 节点参考
 
 | 节点 | 角色 |
@@ -287,6 +291,7 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 - Fast Groups Bypasser V2 从 [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) 移植
 - Florence-2 节点源自 [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)；在此扩展了 Sage Attention 3 和 Transformers 5.x 支持，然后集成到 `nodes/florence2/` 下（参见上方 **上游和集成**）
 - ControlAltAI — 参见 **[ControlAltAI 节点](#controlaltai-节点)**（上游 MIT）
+- CCSR 节点源自 [kijai/ComfyUI-CCSR](https://github.com/kijai/ComfyUI-CCSR)；在此扩展了最新 ComfyUI 和 Python 3.13 支持，然后集成到 `nodes/CCSR/` 下（参见上方 **上游和集成**）
 
 ## 许可证
 
@@ -294,3 +299,4 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 - Fast Groups Bypasser V2 从 [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) 移植，根据 **MIT 许可证** 授权
 - `nodes/florence2/` 下的 Florence-2 代码源自 [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)，根据 **MIT 许可证** 授权；有关该子树的完整文本和版权声明，请参阅 `nodes/florence2/LICENSE`。
 - `nodes/controlaltai/` 下的 ControlAltAI 代码 — **MIT 许可证**（参见 [ControlAltAI 节点](#controlaltai-节点)）
+- `nodes/CCSR/` 下的 CCSR 代码源自 [kijai/ComfyUI-CCSR](https://github.com/kijai/ComfyUI-CCSR)（基于原始 CCSR 的 Apache-2.0 实现）。

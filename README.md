@@ -267,6 +267,10 @@ Image captioning and tagging nodes (such as **Florence-2** or **WD14 Tagger**) o
 
 Image upscaling nodes leveraging the CCSR (Creative Content Super-Resolution) architecture, located under `nodes/CCSR/`. They appear under the ComfyUI category **CCSR**.
 
+### Upstream and integration
+
+The CCSR implementation here started from **[kijai/ComfyUI-CCSR](https://github.com/kijai/ComfyUI-CCSR)**. A separate fork was maintained to support the latest ComfyUI environment and **Python 3.13**; that fork is **merged into this repository** under `nodes/CCSR/` **to reduce my own separate-repo maintenance**.
+
 ### Node reference
 
 | Node | Role |
@@ -287,6 +291,7 @@ See [Changelog](md/CHANGELOG.md) for the full release history.
 - Fast Groups Bypasser V2 ported from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy)
 - Florence-2 nodes trace to [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2); extended here for Sage Attention 3 and Transformers 5.x, then integrated under `nodes/florence2/` (see **Upstream and integration** above)
 - ControlAltAI — see **[ControlAltAI nodes](#controlaltai-nodes)** (upstream MIT)
+- CCSR nodes trace to [kijai/ComfyUI-CCSR](https://github.com/kijai/ComfyUI-CCSR); extended here for the latest ComfyUI environment and Python 3.13, then integrated under `nodes/CCSR/` (see **Upstream and integration** above)
 
 ## License
 
@@ -294,4 +299,5 @@ See [Changelog](md/CHANGELOG.md) for the full release history.
 - Fast Groups Bypasser V2 is ported from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) and is licensed under **MIT License**
 - Florence-2 code under `nodes/florence2/` is derived from [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2) and is licensed under the **MIT License**; see `nodes/florence2/LICENSE` for the full text and copyright notice for that subtree.
 - ControlAltAI code under `nodes/controlaltai/` — **MIT License** (see [ControlAltAI nodes](#controlaltai-nodes))
+- CCSR code under `nodes/CCSR/` is derived from [kijai/ComfyUI-CCSR](https://github.com/kijai/ComfyUI-CCSR) (based on original CCSR Apache-2.0 implementation).
 
