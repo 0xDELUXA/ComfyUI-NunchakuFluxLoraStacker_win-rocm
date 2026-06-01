@@ -299,4 +299,4 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 - Fast Groups Bypasser V2 从 [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) 移植，根据 **MIT 许可证** 授权
 - `nodes/florence2/` 下的 Florence-2 代码源自 [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2)，根据 **MIT 许可证** 授权；有关该子树的完整文本和版权声明，请参阅 `nodes/florence2/LICENSE`。
 - `nodes/controlaltai/` 下的 ControlAltAI 代码 — **MIT 许可证**（参见 [ControlAltAI 节点](#controlaltai-节点)）
-- `nodes/CCSR/` 下的 CCSR 代码源自 [kijai/ComfyUI-CCSR](https://github.com/kijai/ComfyUI-CCSR)（基于原始 CCSR 的 Apache-2.0 实现）。
+- `nodes/CCSR/` 下的 CCSR 代码源自 [kijai/ComfyUI-CCSR](https://github.com/kijai/ComfyUI-CCSR)（基于原始 [csslc/CCSR](https://github.com/csslc/CCSR) 的 Apache-2.0 实现）。
