@@ -7,7 +7,7 @@
   </tr>
 </table>
 
-本仓库提供 **十一个** ComfyUI 自定义节点：
+本仓库提供 **十二个** ComfyUI 自定义节点：
 
 1. **FLUX LoRA Loader V2** (`FluxLoraMultiLoader_10`) - 用于 Nunchaku FLUX 模型的动态多 LoRA 加载，带下拉框 UI
     
@@ -17,33 +17,37 @@
     
     <img src="../png/LoRA%20Stacker%20V2.png" width="400">
 
-3. **SDNQ LoRA Stacker V2** (`SDNQLoraStackerV2_10`) - 用于 SDNQ 量化模型的专用 LoRA 加载器，带动态 10 槽位 UI（设计用于 [comfyui-sdnq-splited](https://github.com/ussoewwin/comfyui-sdnq-splited)）
+3. **LoRA Stacker V3** (`LoraStackerV3_10`) - 与 V2 相同的标准 SD 模型 LoRA 堆叠器，另增 **全局 `toggle_all`** 与 **每槽位 `enabled` 开关**，便于快速 A/B 对比与部分堆叠
+    
+    <img src="../png/LoRA%20Stacker%20V3.png" width="400">
+
+4. **SDNQ LoRA Stacker V2** (`SDNQLoraStackerV2_10`) - 用于 SDNQ 量化模型的专用 LoRA 加载器，带动态 10 槽位 UI（设计用于 [comfyui-sdnq-splited](https://github.com/ussoewwin/comfyui-sdnq-splited)）
     
     <img src="../png/SDNQ%20LoRA%20Stacker%20V2.png" width="400">
 
-4. **Model Patch Loader** (`ModelPatchLoaderCustom`) - 加载模型补丁（ControlNet、特征投影器等），支持 CPU 卸载
+5. **Model Patch Loader** (`ModelPatchLoaderCustom`) - 加载模型补丁（ControlNet、特征投影器等），支持 CPU 卸载
     
     <img src="../png/Model%20Patch%20Loader.png" width="400">
 
-5. **Fast Groups Bypasser V2** (`FastGroupsBypasserV2`) - 基于组的节点控制工具（从 [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) 移植）
+6. **Fast Groups Bypasser V2** (`FastGroupsBypasserV2`) - 基于组的节点控制工具（从 [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) 移植）
     
     <img src="../png/Fast%20Groups%20Bypasser%20V2.png" width="400">
 
-6. **Universal LoRA Analyzer** (`UniversalLoRAAnalyzer`) - 分析 LoRA 文件（模型类型、触发词、基础模型、Civitai/HuggingFace URL）而无需将其加载到图中
+7. **Universal LoRA Analyzer** (`UniversalLoRAAnalyzer`) - 分析 LoRA 文件（模型类型、触发词、基础模型、Civitai/HuggingFace URL）而无需将其加载到图中
     
     <img src="../png/loraana.png" width="400">
 
-7. **Color Filter** (`ColorFilter`) - 从视觉语言标记（如 Florence-2、WD14 Tagger）生成的描述文本中移除单色/黑白相关词语（支持内置模式和用户自定义排除词），然后再输入下游节点
+8. **Color Filter** (`ColorFilter`) - 从视觉语言标记（如 Florence-2、WD14 Tagger）生成的描述文本中移除单色/黑白相关词语（支持内置模式和用户自定义排除词），然后再输入下游节点
     
     <img src="../png/colorfilter.png" width="400">
 
-8. **Florence-2**（四个节点：`DownloadAndLoadFlorence2Model`、`DownloadAndLoadFlorence2Lora`、`Florence2ModelLoader`、`Florence2Run`）— 加载 Florence-2 系列视觉语言检查点（Hugging Face 下载或本地 `models/LLM`），可选 PEFT LoRA，然后运行描述、OCR、DocVQA、定位、分割和提示生成任务；输出包括 `FL2MODEL`、`PEFTLORA`、标注图像、蒙版和字符串。
+9. **Florence-2**（四个节点：`DownloadAndLoadFlorence2Model`、`DownloadAndLoadFlorence2Lora`、`Florence2ModelLoader`、`Florence2Run`）— 加载 Florence-2 系列视觉语言检查点（Hugging Face 下载或本地 `models/LLM`），可选 PEFT LoRA，然后运行描述、OCR、DocVQA、定位、分割和提示生成任务；输出包括 `FL2MODEL`、`PEFTLORA`、标注图像、蒙版和字符串。
 
     <img src="../png/Florence2.png" width="400">
 
-9. **ControlAltAI**（11 个节点）— 我的 Python 3.13 分支，现位于 `nodes/controlaltai/`（参见下方 **[ControlAltAI 节点](#controlaltai-节点)**）。
+10. **ControlAltAI**（11 个节点）— 我的 Python 3.13 分支，现位于 `nodes/controlaltai/`（参见下方 **[ControlAltAI 节点](#controlaltai-节点)**）。
 
-10. **CCSR**（三个节点：`DownloadAndLoadCCSRModel`、`CCSR_Model_Select`、`CCSR_Upscale`）— 加载 CCSR 模型（Hugging Face 自动下载或本地检查点），支持分块采样与颜色校正，执行高质量图像超分辨率放大（参见下方 **[CCSR 节点](#ccsr-节点)**）。
+11. **CCSR**（三个节点：`DownloadAndLoadCCSRModel`、`CCSR_Model_Select`、`CCSR_Upscale`）— 加载 CCSR 模型（Hugging Face 自动下载或本地检查点），支持分块采样与颜色校正，执行高质量图像超分辨率放大（参见下方 **[CCSR 节点](#ccsr-节点)**）。
     
     <img src="../png/ccsr.png" width="400">
 
@@ -142,7 +146,44 @@ V1 节点 (`NunchakuFluxLoraStack`) 仍然可用，原因如下：
 - `lora_name_X`: LoRA 文件名 (可选)
 - `lora_wt_X`: LoRA 强度，默认 1.0 (可选)
 
-### 2. Model Patch Loader (`ModelPatchLoaderCustom`)
+### 2. LoRA Stacker V3 (`LoraStackerV3_10`)
+
+适用于 **标准 ComfyUI `MODEL` + `CLIP` 流水线**（SDXL、Flux、WAN2.2 等）的通用 LoRA 堆叠器。与 **LoRA Stacker V2** 相同的动态 1–10 槽位 UI，并增加 **开关控件**，便于快速对比与部分堆叠。
+
+#### 功能
+- **动态槽位数量**：**🔢 LoRA Count** 下拉框显示 1–10 个槽位；节点高度自动调整
+- **全局总开关**：`toggle_all` — **关闭** 时 **不应用任何 LoRA**（输出原样透传）
+- **每槽位开关**：`enabled_1` … `enabled_10` — 当 `toggle_all` **开启** 时，各槽位可独立启用或禁用
+- **标准 LoRA 加载**：使用 ComfyUI `load_lora_for_models`（模型与 CLIP 强度绑定为同一数值）
+- **负强度**：`lora_strength_X` 范围 **-100.0 至 100.0**（步长 0.01）
+
+#### 开关行为
+| `toggle_all` | `enabled_X` | 槽位 X 是否应用？ |
+|--------------|-------------|-------------------|
+| 关 | （任意） | 否 |
+| 开 | 关 | 否 |
+| 开 | 开 | 是（已选择 LoRA 文件且强度 ≠ 0） |
+
+#### 使用方法
+1. 从检查点加载器连接 **model** 与 **clip**
+2. 将 **🔢 LoRA Count** 设为要显示的槽位数量
+3. 使用 **toggle_all** 绕过整个 LoRA 堆叠，或按槽位切换 **enabled** 开关
+4. 为启用的槽位选择 LoRA 文件并设置 **lora_strength**
+5. 将 **MODEL** / **CLIP** 输出连接到图的其余部分
+
+#### 参数
+- `model`、`clip`：来自基础加载器的输入（必需）
+- `toggle_all`：所有 LoRA 槽位的总开关（默认：True）
+- `lora_count`：后端槽位上限（由 UI 同步；节点面上隐藏）
+- `enabled_X`：每槽位启用（可选，默认 True）
+- `lora_name_X`：LoRA 文件名或 `None`（可选）
+- `lora_strength_X`：槽位 X 的强度（可选，默认 1.0）
+
+#### 截图
+
+<img src="../png/LoRA%20Stacker%20V3.png" width="400">
+
+### 3. Model Patch Loader (`ModelPatchLoaderCustom`)
 
 #### 功能
 - **CPU 卸载支持**: 可选择将模型补丁加载到 CPU 内存以节省 VRAM
@@ -166,7 +207,7 @@ V1 节点 (`NunchakuFluxLoraStack`) 仍然可用，原因如下：
 - `name`: 模型补丁文件名 (必需)
 - `cpu_offload`: 将模型加载到 CPU 内存而非 GPU (默认: True)
 
-### 3. Fast Groups Bypasser V2 (`FastGroupsBypasserV2`)
+### 4. Fast Groups Bypasser V2 (`FastGroupsBypasserV2`)
 
 **注意:** 此节点是从原始 [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) 实现移植的，与 LoRA 加载功能无关。它作为工作流管理的实用工具包含在此处。
 
