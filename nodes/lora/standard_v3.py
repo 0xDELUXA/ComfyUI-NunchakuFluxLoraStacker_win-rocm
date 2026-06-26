@@ -64,7 +64,7 @@ class StandardLoraLoaderBaseV3:
                 },
             )
             inputs["optional"][f"lora_name_{i}"] = (loras, {"tooltip": f"LoRA {i} filename"})
-            inputs["optional"][f"lora_wt_{i}"] = ("FLOAT", {"default": 1.0, "min": -100.0, "max": 100.0, "step": 0.001, "tooltip": f"LoRA {i} Strength"})
+            inputs["optional"][f"lora_strength_{i}"] = ("FLOAT", {"default": 1.0, "min": -100.0, "max": 100.0, "step": 0.01, "tooltip": f"Strength for LoRA {i}."})
 
         return inputs
 
@@ -85,8 +85,8 @@ class StandardLoraLoaderBaseV3:
             if not enabled:
                 continue
 
-            lora_wt = kwargs.get(f"lora_wt_{i}", 1.0)
-            strength = lora_wt
+            lora_strength = kwargs.get(f"lora_strength_{i}", 1.0)
+            strength = lora_strength
 
             if abs(strength) < 1e-5:
                 continue

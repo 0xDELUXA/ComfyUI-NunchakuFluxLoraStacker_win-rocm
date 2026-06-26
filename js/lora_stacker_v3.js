@@ -58,15 +58,15 @@ app.registerExtension({
             for (let i = 1; i <= 10; i++) {
                 const wEnabled = all.find(w => w.name === `enabled_${i}`);
                 const wName = all.find(w => w.name === `lora_name_${i}`);
-                const wWt = all.find(w => w.name === `lora_wt_${i}`);
-                if (wEnabled && wName && wWt) {
-                    node.cachedWidgets[i] = [wEnabled, wName, wWt];
+                const wStrength = all.find(w => w.name === `lora_strength_${i}`);
+                if (wEnabled && wName && wStrength) {
+                    node.cachedWidgets[i] = [wEnabled, wName, wStrength];
                     wEnabled.type = "toggle";
                     wName.type = "combo";
-                    wWt.type = "number";
+                    wStrength.type = "number";
                     if (wEnabled.computeSize) delete wEnabled.computeSize;
                     if (wName.computeSize) delete wName.computeSize;
-                    if (wWt.computeSize) delete wWt.computeSize;
+                    if (wStrength.computeSize) delete wStrength.computeSize;
                 }
             }
             cacheReady = true;
@@ -149,19 +149,19 @@ app.registerExtension({
                 if (pair && pair.length >= 3) {
                     const wEnabled = pair[0];
                     const wName = pair[1];
-                    const wWt = pair[2];
+                    const wStrength = pair[2];
 
                     wEnabled.type = "toggle";
                     wName.type = "combo";
-                    wWt.type = "number";
+                    wStrength.type = "number";
 
                     if (wEnabled.computeSize) delete wEnabled.computeSize;
                     if (wName.computeSize) delete wName.computeSize;
-                    if (wWt.computeSize) delete wWt.computeSize;
+                    if (wStrength.computeSize) delete wStrength.computeSize;
 
                     this.widgets.push(wEnabled);
                     this.widgets.push(wName);
-                    this.widgets.push(wWt);
+                    this.widgets.push(wStrength);
                 }
             }
 
