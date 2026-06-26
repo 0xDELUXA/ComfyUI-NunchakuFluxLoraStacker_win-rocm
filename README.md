@@ -7,7 +7,7 @@
   </tr>
 </table>
 
-This repository provides **eleven custom nodes** for ComfyUI:
+This repository provides **twelve custom nodes** for ComfyUI:
 
 1. **FLUX LoRA Loader V2** (`FluxLoraMultiLoader_10`) - Dynamic multi-LoRA loading with combo box UI for Nunchaku FLUX models
     
@@ -17,33 +17,37 @@ This repository provides **eleven custom nodes** for ComfyUI:
     
     <img src="png/LoRA%20Stacker%20V2.png" width="400">
 
-3. **SDNQ LoRA Stacker V2** (`SDNQLoraStackerV2_10`) - Dedicated LoRA loader for SDNQ quantized models with dynamic 10-slot UI (designed for use with [comfyui-sdnq-splited](https://github.com/ussoewwin/comfyui-sdnq-splited))
+3. **LoRA Stacker V3** (`LoraStackerV3_10`) - Same as V2 for standard SD models, plus **global `toggle_all`** and **per-slot `enabled` toggles** for quick A/B and partial stacks
+    
+    <img src="png/LoRA%20Stacker%20V3.png" width="400">
+
+4. **SDNQ LoRA Stacker V2** (`SDNQLoraStackerV2_10`) - Dedicated LoRA loader for SDNQ quantized models with dynamic 10-slot UI (designed for use with [comfyui-sdnq-splited](https://github.com/ussoewwin/comfyui-sdnq-splited))
     
     <img src="png/SDNQ%20LoRA%20Stacker%20V2.png" width="400">
 
-4. **Model Patch Loader** (`ModelPatchLoaderCustom`) - Load model patches (ControlNet, feature projectors, etc.) with CPU offload support
+5. **Model Patch Loader** (`ModelPatchLoaderCustom`) - Load model patches (ControlNet, feature projectors, etc.) with CPU offload support
     
     <img src="png/Model%20Patch%20Loader.png" width="400">
 
-5. **Fast Groups Bypasser V2** (`FastGroupsBypasserV2`) - Group-based node control utility (ported from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy))
+6. **Fast Groups Bypasser V2** (`FastGroupsBypasserV2`) - Group-based node control utility (ported from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy))
     
     <img src="png/Fast%20Groups%20Bypasser%20V2.png" width="400">
 
-6. **Universal LoRA Analyzer** (`UniversalLoRAAnalyzer`) - Analyze LoRA files (model type, trigger words, base model, Civitai/HuggingFace URLs) without loading into the graph
+7. **Universal LoRA Analyzer** (`UniversalLoRAAnalyzer`) - Analyze LoRA files (model type, trigger words, base model, Civitai/HuggingFace URLs) without loading into the graph
     
     <img src="png/loraana.png" width="400">
 
-7. **Color Filter** (`ColorFilter`) - Strip monochrome / black-and-white wording (supporting both built-in patterns and custom user-defined exclude words) from caption text produced by vision-language tagging (e.g. Florence-2, WD14 Tagger) before feeding prompts to downstream nodes
+8. **Color Filter** (`ColorFilter`) - Strip monochrome / black-and-white wording (supporting both built-in patterns and custom user-defined exclude words) from caption text produced by vision-language tagging (e.g. Florence-2, WD14 Tagger) before feeding prompts to downstream nodes
     
     <img src="png/colorfilter.png" width="400">
 
-8. **Florence-2** (four nodes: `DownloadAndLoadFlorence2Model`, `DownloadAndLoadFlorence2Lora`, `Florence2ModelLoader`, `Florence2Run`) — Load Florence-2–family vision-language checkpoints (Hugging Face download or local `models/LLM`), optional PEFT LoRA, then run captioning, OCR, DocVQA, grounding, segmentation, and prompt-generation tasks; outputs include `FL2MODEL`, `PEFTLORA`, annotated images, masks, and strings.
+9. **Florence-2** (four nodes: `DownloadAndLoadFlorence2Model`, `DownloadAndLoadFlorence2Lora`, `Florence2ModelLoader`, `Florence2Run`) — Load Florence-2–family vision-language checkpoints (Hugging Face download or local `models/LLM`), optional PEFT LoRA, then run captioning, OCR, DocVQA, grounding, segmentation, and prompt-generation tasks; outputs include `FL2MODEL`, `PEFTLORA`, annotated images, masks, and strings.
 
     <img src="png/Florence2.png" width="400">
 
-9. **ControlAltAI** (11 nodes) — my Python 3.13 fork, now under `nodes/controlaltai/` (see **[ControlAltAI nodes](#controlaltai-nodes)** below).
+10. **ControlAltAI** (11 nodes) — my Python 3.13 fork, now under `nodes/controlaltai/` (see **[ControlAltAI nodes](#controlaltai-nodes)** below).
 
-10. **CCSR** (three nodes: `DownloadAndLoadCCSRModel`, `CCSR_Model_Select`, `CCSR_Upscale`) — Load CCSR models (Hugging Face auto-download or local checkpoints) and perform high-quality image upscaling with tiled sampling and color correction (see **[CCSR nodes](#ccsr-nodes)** below).
+11. **CCSR** (three nodes: `DownloadAndLoadCCSRModel`, `CCSR_Model_Select`, `CCSR_Upscale`) — Load CCSR models (Hugging Face auto-download or local checkpoints) and perform high-quality image upscaling with tiled sampling and color correction (see **[CCSR nodes](#ccsr-nodes)** below).
     
     <img src="png/ccsr.png" width="400">
 
@@ -142,7 +146,44 @@ This repository now includes multiple V2 nodes with enhanced functionality:
 - `lora_name_X`: LoRA filename (optional)
 - `lora_wt_X`: LoRA strength, default 1.0 (optional)
 
-### 2. Model Patch Loader (`ModelPatchLoaderCustom`)
+### 2. LoRA Stacker V3 (`LoraStackerV3_10`)
+
+Universal LoRA stacker for **standard ComfyUI `MODEL` + `CLIP` pipelines** (SDXL, Flux, WAN2.2, etc.). Same dynamic 1–10 slot UI as **LoRA Stacker V2**, with **toggle controls** for fast comparison and partial stacks.
+
+#### Features
+- **Dynamic slot count**: **🔢 LoRA Count** dropdown shows 1–10 slots; node height adjusts automatically
+- **Global master switch**: `toggle_all` — when **off**, **no LoRAs are applied** (outputs pass through unchanged)
+- **Per-slot switches**: `enabled_1` … `enabled_10` — when `toggle_all` is **on**, each slot can be enabled or disabled independently
+- **Standard LoRA loading**: Uses ComfyUI `load_lora_for_models` (model and CLIP strengths are tied to the same value)
+- **Negative strengths**: `lora_strength_X` range **-100.0 to 100.0** (step 0.01)
+
+#### Toggle behaviour
+| `toggle_all` | `enabled_X` | Slot X applied? |
+|--------------|-------------|-----------------|
+| Off | (any) | No |
+| On | Off | No |
+| On | On | Yes (if a LoRA file is selected and strength ≠ 0) |
+
+#### Usage
+1. Connect **model** and **clip** from your checkpoint loader
+2. Set **🔢 LoRA Count** to the number of visible slots
+3. Use **toggle_all** to bypass the entire LoRA stack, or flip individual **enabled** toggles per slot
+4. Pick LoRA files and **lora_strength** values for active slots
+5. Connect **MODEL** / **CLIP** outputs to the rest of the graph
+
+#### Parameters
+- `model`, `clip`: Inputs from your base loader (required)
+- `toggle_all`: Master enable for all LoRA slots (default: True)
+- `lora_count`: Backend slot limit (synced by UI; hidden on the node face)
+- `enabled_X`: Per-slot enable (optional, default True)
+- `lora_name_X`: LoRA filename or `None` (optional)
+- `lora_strength_X`: Strength for slot X (optional, default 1.0)
+
+#### Screenshot
+
+<img src="png/LoRA%20Stacker%20V3.png" width="400">
+
+### 3. Model Patch Loader (`ModelPatchLoaderCustom`)
 
 #### Features
 - **CPU Offload Support**: Optionally load model patches to CPU memory to save VRAM
@@ -166,7 +207,7 @@ This repository now includes multiple V2 nodes with enhanced functionality:
 - `name`: Model patch filename (required)
 - `cpu_offload`: Load model to CPU memory instead of GPU (default: True)
 
-### 3. Fast Groups Bypasser V2 (`FastGroupsBypasserV2`)
+### 4. Fast Groups Bypasser V2 (`FastGroupsBypasserV2`)
 
 **Note:** This node is a port from the original [rgthree-comfy](https://github.com/rgthree/rgthree-comfy) implementation and is unrelated to LoRA loading functionality. It is included here as a utility feature for workflow management.
 
