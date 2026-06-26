@@ -9,6 +9,8 @@
 
 ## 发布历史
 
+- v1.36 – v3 节点添加概要
+
 - v1.35 – CCSR: 在 `nodes/CCSR/` 下集成了 CCSR 放大节点（CCSR_Upscale、CCSR_Model_Select、DownloadAndLoadCCSRModel；上游源自 [kijai/ComfyUI-CCSR](https://github.com/kijai/ComfyUI-CCSR)，基于原始 [csslc/CCSR](https://github.com/csslc/CCSR) 的 Apache-2.0 实现）。添加了对 Python 3.13 和最新 ComfyUI 环境的兼容支持，实现了动态包路径解析以支持自定义安装目录名称，并在 README 中添加了节点说明和截图。
 
 - v1.34 – Color Filter: 修复了由于过期的预编译字节码缓存（`__pycache__`）导致自定义排除词失效的问题；并实现了递归逗号折叠算法，以正确处理移除多个连续单词时的格式化问题。 ([发行说明](v1.34.md))

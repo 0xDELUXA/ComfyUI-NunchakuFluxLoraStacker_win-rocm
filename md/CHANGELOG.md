@@ -9,6 +9,8 @@
 
 ## Release History
 
+- v1.36 – v3ノード追加概要
+
 - v1.35 – CCSR: Integrated CCSR upscaler nodes (CCSR_Upscale, CCSR_Model_Select, DownloadAndLoadCCSRModel) under `nodes/CCSR/` (upstream https://github.com/kijai/ComfyUI-CCSR based on csslc/CCSR Apache-2.0). Added Python 3.13 and latest ComfyUI compatibility, implemented dynamic package path resolution to support custom installation directory names, and added README documentation with node screenshots.
 
 - v1.34 – Color Filter: Fixed an issue where custom exclusion terms failed to match due to stale precompiled bytecode caches (`__pycache__`), and implemented recursive comma-collapsing to properly handle formatting when multiple consecutive words are stripped out. ([Release Notes](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.34))
