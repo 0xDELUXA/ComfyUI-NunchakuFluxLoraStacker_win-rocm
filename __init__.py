@@ -17,6 +17,7 @@ logger = logging.getLogger(__name__)
 from .nodes.lora.flux import NunchakuFluxLoraStack
 from .nodes.lora.flux_v2 import GENERATED_NODES as FLUX_NODES, GENERATED_DISPLAY_NAMES as FLUX_NAMES
 from .nodes.lora.standard import GENERATED_NODES as STANDARD_LORA_NODES, GENERATED_DISPLAY_NAMES as STANDARD_LORA_NAMES
+from .nodes.lora.standard_v3 import GENERATED_NODES as STANDARD_LORA_V3_NODES, GENERATED_DISPLAY_NAMES as STANDARD_LORA_V3_NAMES
 from .nodes.lora.sdnq import GENERATED_NODES as SDNQ_LORA_NODES, GENERATED_DISPLAY_NAMES as SDNQ_LORA_NAMES
 from .nodes.misc_v2 import NODE_CLASS_MAPPINGS as MISC_NODES, NODE_DISPLAY_NAME_MAPPINGS as MISC_NAMES
 from .nodes.load_image_ussoewwin import NODE_CLASS_MAPPINGS as LOAD_IMAGE_NODES, NODE_DISPLAY_NAME_MAPPINGS as LOAD_IMAGE_NAMES
@@ -32,6 +33,8 @@ for node_class in FLUX_NODES.values():
     node_class.__version__ = __version__
 for node_class in STANDARD_LORA_NODES.values():
     node_class.__version__ = __version__
+for node_class in STANDARD_LORA_V3_NODES.values():
+    node_class.__version__ = __version__
 for node_class in SDNQ_LORA_NODES.values():
     node_class.__version__ = __version__
 for node_class in FLORENCE2_NODES.values():
@@ -44,6 +47,7 @@ NODE_CLASS_MAPPINGS = {
     "FluxLoraMultiLoader": NunchakuFluxLoraStack,
     **FLUX_NODES,
     **STANDARD_LORA_NODES,
+    **STANDARD_LORA_V3_NODES,
     **SDNQ_LORA_NODES,
     **MISC_NODES,
     **LOAD_IMAGE_NODES,
@@ -59,6 +63,7 @@ NODE_DISPLAY_NAME_MAPPINGS = {
     "FluxLoraMultiLoader": "FLUX LoRA Multi Loader (Legacy - Do Not Use in V2)",
     **FLUX_NAMES,
     **STANDARD_LORA_NAMES,
+    **STANDARD_LORA_V3_NAMES,
     **SDNQ_LORA_NAMES,
     **MISC_NAMES,
     **LOAD_IMAGE_NAMES,
