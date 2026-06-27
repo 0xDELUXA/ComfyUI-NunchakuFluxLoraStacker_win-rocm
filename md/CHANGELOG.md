@@ -9,7 +9,7 @@
 
 ## Release History
 
-- v1.36 – v3ノード追加概要
+- v1.36 – LoRA Stacker V3: Added **LoRA Stacker V3** (`LoraStackerV3_10`) for standard SD models—the same 10-slot stack as V2, plus a **global `toggle_all` master switch** (when off, no LoRAs are applied and outputs pass through unchanged) and **per-slot `enabled_1` … `enabled_10` toggles** for quick A/B comparisons and partial stacks without rewiring. Implemented in `nodes/lora/standard_v3.py`; README and zhmd README document usage and the toggle truth table.
 
 - v1.35 – CCSR: Integrated CCSR upscaler nodes (CCSR_Upscale, CCSR_Model_Select, DownloadAndLoadCCSRModel) under `nodes/CCSR/` (upstream https://github.com/kijai/ComfyUI-CCSR based on csslc/CCSR Apache-2.0). Added Python 3.13 and latest ComfyUI compatibility, implemented dynamic package path resolution to support custom installation directory names, and added README documentation with node screenshots.
 
