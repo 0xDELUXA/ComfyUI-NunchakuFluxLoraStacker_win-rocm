@@ -7,7 +7,7 @@ A standalone ComfyUI custom node for Nunchaku FLUX LoRA Stacking.
 import logging
 
 # Version information
-__version__ = "1.35"
+__version__ = "1.36"
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
