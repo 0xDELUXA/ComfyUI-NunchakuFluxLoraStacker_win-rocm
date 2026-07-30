@@ -17,3 +17,11 @@ timm
 pillow>=10.2.0
 peft
 accelerate>=0.26.0
+
+# CCSR upscaler (nodes/CCSR) — required at pack import time
+# Without these, ComfyUI fails to load the entire custom node pack (see issue #5)
+taming-transformers
+omegaconf
+einops
+pytorch-lightning>=2.2.1
+open-clip-torch>=2.23.0
