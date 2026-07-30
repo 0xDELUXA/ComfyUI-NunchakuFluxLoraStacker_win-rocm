@@ -14,17 +14,40 @@ import torch
 import comfy.model_management as model_management
 
 
+# Flux1 aspect patterns from ControlAltAI Megapixel Calculator
+# (nodes/controlaltai/megapixel_calculator_node.py), sized at 1.0 MP / divisible_by 64.
+# High-* entries are the same ratios at 1.5 MP.
 _PRESETS = [
-    "Portrait 4:5 (1024x1280)",
-    "Square 1:1 (1024x1024)",
-    "Portrait 3:4 (896x1152)",
-    "Portrait 2:3 (832x1248)",
-    "Portrait 9:16 (720x1280)",
-    "Landscape 4:3 (1152x864)",
-    "Landscape 3:2 (1248x832)",
-    "Landscape 16:9 (1280x720)",
-    "High Portrait 2:3 (1024x1536)",
-    "High Landscape 3:2 (1536x1024)",
+    # --- 1.0 MP (Flux1 default) ---
+    "1:1 (Perfect Square) (1024x1024)",
+    "2:3 (Classic Portrait) (832x1216)",
+    "3:4 (Golden Ratio) (896x1152)",
+    "3:5 (Elegant Vertical) (768x1280)",
+    "4:5 (Artistic Frame) (896x1088)",
+    "5:7 (Balanced Portrait) (832x1152)",
+    "5:8 (Tall Portrait) (768x1280)",
+    "7:9 (Modern Portrait) (896x1152)",
+    "9:16 (Slim Vertical) (768x1344)",
+    "9:19 (Tall Slim) (704x1472)",
+    "9:21 (Ultra Tall) (640x1536)",
+    "9:32 (Skyline) (512x1856)",
+    "3:2 (Golden Landscape) (1216x832)",
+    "4:3 (Classic Landscape) (1152x896)",
+    "5:3 (Wide Horizon) (1280x768)",
+    "5:4 (Balanced Frame) (1088x896)",
+    "7:5 (Elegant Landscape) (1152x832)",
+    "8:5 (Cinematic View) (1280x768)",
+    "9:7 (Artful Horizon) (1152x896)",
+    "16:9 (Panorama) (1344x768)",
+    "19:9 (Cinematic Ultrawide) (1472x704)",
+    "21:9 (Epic Ultrawide) (1536x640)",
+    "32:9 (Extreme Ultrawide) (1856x512)",
+    # --- 1.5 MP (high) ---
+    "High 1:1 (Perfect Square) (1216x1216)",
+    "High 2:3 (Classic Portrait) (1024x1536)",
+    "High 3:2 (Golden Landscape) (1536x1024)",
+    "High 9:16 (Slim Vertical) (896x1600)",
+    "High 16:9 (Panorama) (1600x896)",
 ]
 
 
@@ -41,7 +64,7 @@ class AnimaResolutionSelector:
         return {
             "required": {
                 "mode": (["Preset", "Custom"], {"default": "Preset"}),
-                "preset": (_PRESETS, {"default": "Portrait 4:5 (1024x1280)"}),
+                "preset": (_PRESETS, {"default": "4:5 (Artistic Frame) (896x1088)"}),
                 "custom_width": (
                     "INT",
                     {"default": 1024, "min": 16, "max": 8192, "step": 8},

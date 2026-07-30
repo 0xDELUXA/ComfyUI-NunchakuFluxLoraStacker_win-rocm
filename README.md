@@ -7,7 +7,7 @@
   </tr>
 </table>
 
-This repository provides **twelve custom nodes** for ComfyUI:
+This repository provides **thirteen custom nodes** for ComfyUI:
 
 1. **FLUX LoRA Loader V2** (`FluxLoraMultiLoader_10`) - Dynamic multi-LoRA loading with combo box UI for Nunchaku FLUX models
     
@@ -50,6 +50,10 @@ This repository provides **twelve custom nodes** for ComfyUI:
 11. **CCSR** (three nodes: `DownloadAndLoadCCSRModel`, `CCSR_Model_Select`, `CCSR_Upscale`) — Load CCSR models (Hugging Face auto-download or local checkpoints) and perform high-quality image upscaling with tiled sampling and color correction (see **[CCSR nodes](#ccsr-nodes)** below).
     
     <img src="png/ccsr.png" width="400">
+
+12. **Resolution Selector** (`AnimaResolutionSelector`) — Pick width/height from Flux1-style aspect presets (or custom size), emit hires dimensions, an empty **16-channel** latent for Anima-style workflows, and an info string (see **[Resolution Selector](#resolution-selector-animaresolutionselector)** below).
+
+    <img src="png/Resolution%20Selector.png" width="400">
 
 ---
 
@@ -321,6 +325,45 @@ The CCSR implementation here started from **[kijai/ComfyUI-CCSR](https://github.
 | **DownloadAndLoadCCSRModel** | Downloads pre-trained CCSR models (`real-world_ccsr-fp16.safetensors` / `real-world_ccsr-fp32.safetensors`) from Hugging Face or loads them if already present under `models/CCSR/`. Returns **`ccsr_model`** (`CCSRMODEL`). |
 | **CCSR_Model_Select** | Selects and loads a local CCSR checkpoint from the standard ComfyUI `checkpoints` directory. Returns **`ccsr_model`** (`CCSRMODEL`). |
 | **CCSR_Upscale** | Performs image upscaling using the loaded CCSR model. Supports customizable steps, tiling parameter controls (`ccsr_tiled_mixdiff` / `ccsr_tiled_vae_gaussian_weights`), and color correction options (`adain` / `wavelet`). Returns **`upscaled_image`** (`IMAGE`). |
+
+---
+
+## Resolution Selector (`AnimaResolutionSelector`)
+
+Resolution helper for **Anima / 16-channel latent** workflows. Implementation: `nodes/resolution_selector.py`. Menu category: **ussoewwin/resolution**.
+
+### Purpose
+
+Choose a canvas size from a Flux1-oriented preset list (same aspect-ratio vocabulary as the ControlAltAI Megapixel Calculator under `nodes/controlaltai/`), or enter a custom width/height. The node outputs integer sizes, optional hires sizes via `hires_scale`, an empty **16-channel** latent (`batch × 16 × H/8 × W/8`) suitable for Anima-style Empty Latent wiring, and a short `info` string for debugging.
+
+### Screenshot
+
+<img src="png/Resolution%20Selector.png" width="400">
+
+### Inputs
+
+| Widget | Type | Description |
+|--------|------|-------------|
+| `mode` | `Preset` / `Custom` | `Preset` uses the dropdown; `Custom` uses `custom_width` / `custom_height`. |
+| `preset` | combo | Flux1 aspect patterns at **1.0 MP** (divisible by 64), plus **High** variants at **1.5 MP** (e.g. `1:1`, `2:3`, `3:4`, `4:5`, `9:16`, `16:9`, ultrawide ratios, …). |
+| `custom_width` / `custom_height` | INT (step 8) | Used when `mode` is `Custom`, or as fallback if a preset string cannot be parsed. |
+| `hires_scale` | FLOAT (default `1.3`) | Multiplier for `hires_width` / `hires_height` (rounded and snapped to multiples of 8). |
+| `batch_size` | INT | Batch dimension of the empty latent. |
+
+### Outputs
+
+| Port | Type | Description |
+|------|------|-------------|
+| `width` / `height` | INT | Selected pixel size. |
+| `hires_width` / `hires_height` | INT | Size after `hires_scale` (min 16, multiple of 8). |
+| `latent` | LATENT | Empty samples tensor with **16** channels (Anima-oriented). |
+| `info` | STRING | Human-readable summary (`mode`, source, sizes, scale, batch). |
+
+### Behaviour notes
+
+- Preset labels embed `WxH` (e.g. `4:5 (Artistic Frame) (896x1088)`); dimensions are parsed from that substring.
+- Latent spatial size is `height // 8` × `width // 8`.
+- Device/dtype for the empty latent follow ComfyUI `intermediate_device` / `intermediate_dtype`.
 
 ---
 

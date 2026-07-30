@@ -7,7 +7,7 @@
   </tr>
 </table>
 
-本仓库提供 **十二个** ComfyUI 自定义节点：
+本仓库提供 **十三个** ComfyUI 自定义节点：
 
 1. **FLUX LoRA Loader V2** (`FluxLoraMultiLoader_10`) - 用于 Nunchaku FLUX 模型的动态多 LoRA 加载，带下拉框 UI
     
@@ -50,6 +50,10 @@
 11. **CCSR**（三个节点：`DownloadAndLoadCCSRModel`、`CCSR_Model_Select`、`CCSR_Upscale`）— 加载 CCSR 模型（Hugging Face 自动下载或本地检查点），支持分块采样与颜色校正，执行高质量图像超分辨率放大（参见下方 **[CCSR 节点](#ccsr-节点)**）。
     
     <img src="../png/ccsr.png" width="400">
+
+12. **Resolution Selector**（`AnimaResolutionSelector`）— 从 Flux1 风格的宽高比预设（或自定义尺寸）选择宽高，输出 hires 尺寸、面向 Anima 工作流的空 **16 通道** latent，以及 info 字符串（参见下方 **[Resolution Selector](#resolution-selector-animaresolutionselector)**）。
+
+    <img src="../png/Resolution%20Selector.png" width="400">
 
 ---
 
@@ -321,6 +325,45 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 | **DownloadAndLoadCCSRModel** | 从 Hugging Face 下载预训练的 CCSR 模型（`real-world_ccsr-fp16.safetensors` / `real-world_ccsr-fp32.safetensors`），或者在本地已存在于 `models/CCSR/` 下时直接加载。返回 **`ccsr_model`** (`CCSRMODEL`)。 |
 | **CCSR_Model_Select** | 从标准 ComfyUI `checkpoints` 目录选择并加载本地 CCSR 权重文件。返回 **`ccsr_model`** (`CCSRMODEL`)。 |
 | **CCSR_Upscale** | 使用已加载的 CCSR 模型执行图像超分辨率放大。支持自定义步数、分块参数控制（`ccsr_tiled_mixdiff` / `ccsr_tiled_vae_gaussian_weights`）以及颜色校正选项（`adain` / `wavelet`）。返回 **`upscaled_image`** (`IMAGE`)。 |
+
+---
+
+## Resolution Selector (`AnimaResolutionSelector`)
+
+面向 **Anima / 16 通道 latent** 工作流的分辨率辅助节点。实现：`nodes/resolution_selector.py`。菜单分类：**ussoewwin/resolution**。
+
+### 用途
+
+从面向 Flux1 的预设列表（与 `nodes/controlaltai/` 下 ControlAltAI Megapixel Calculator 相同的宽高比词汇）选择画布尺寸，或输入自定义宽高。节点输出整型尺寸、经 `hires_scale` 计算的 hires 尺寸、适合 Anima 风格 Empty Latent 接线的空 **16 通道** latent（`batch × 16 × H/8 × W/8`），以及用于调试的简短 `info` 字符串。
+
+### 截图
+
+<img src="../png/Resolution%20Selector.png" width="400">
+
+### 输入
+
+| 控件 | 类型 | 说明 |
+|------|------|------|
+| `mode` | `Preset` / `Custom` | `Preset` 使用下拉预设；`Custom` 使用 `custom_width` / `custom_height`。 |
+| `preset` | combo | Flux1 宽高比预设（**1.0 MP**，64 对齐），以及 **High** 变体（**1.5 MP**）（例如 `1:1`、`2:3`、`3:4`、`4:5`、`9:16`、`16:9`、超宽比等）。 |
+| `custom_width` / `custom_height` | INT（步进 8） | `mode` 为 `Custom` 时使用；预设字符串无法解析时作为回退。 |
+| `hires_scale` | FLOAT（默认 `1.3`） | `hires_width` / `hires_height` 的倍率（四舍五入并对齐到 8 的倍数）。 |
+| `batch_size` | INT | 空 latent 的 batch 维。 |
+
+### 输出
+
+| 端口 | 类型 | 说明 |
+|------|------|------|
+| `width` / `height` | INT | 选定的像素尺寸。 |
+| `hires_width` / `hires_height` | INT | 应用 `hires_scale` 后的尺寸（最小 16，8 的倍数）。 |
+| `latent` | LATENT | **16** 通道的空 samples 张量（面向 Anima）。 |
+| `info` | STRING | 可读摘要（`mode`、来源、尺寸、倍率、batch）。 |
+
+### 行为说明
+
+- 预设标签内嵌 `WxH`（例如 `4:5 (Artistic Frame) (896x1088)`）；尺寸从该子串解析。
+- Latent 空间尺寸为 `height // 8` × `width // 8`。
+- 空 latent 的设备/dtype 跟随 ComfyUI 的 `intermediate_device` / `intermediate_dtype`。
 
 ---
 
