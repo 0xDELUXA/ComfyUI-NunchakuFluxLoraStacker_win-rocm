@@ -9,6 +9,8 @@
 
 ## 发布历史
 
+- v1.38 – CCSR 依赖：在 `requirements.txt` 中补充 CCSR 所需包（`pytorch-lightning` 及相关依赖），并新增 `install.py`，由 ComfyUI-Manager 自动安装—避免缺少 `pytorch_lightning` 时整个自定义节点包加载失败 ([发行说明](https://github.com/ussoewwin/ComfyUI-NunchakuFluxLoraStacker/releases/tag/v1.38))
+
 - v1.37 – Nunchaku Resolution Selector：新增 **Nunchaku Resolution Selector**（`NunchakuResolutionSelector`，菜单 `ussoewwin/resolution`）— 从 Flux1 风格宽高比预设（或自定义尺寸）选择宽高，输出 hires 尺寸、空 **16 通道** latent 与 info 字符串。预设沿用 ControlAltAI Megapixel Calculator 的比例（1.0 MP / 1.5 MP High）。README 与 zhmd README 已补充说明与截图。
 
 - v1.36 – LoRA Stacker V3：新增标准 SD 模型用 **LoRA Stacker V3**（`LoraStackerV3_10`）— 与 V2 相同的 10 槽位堆叠，另增 **全局 `toggle_all` 总开关**（关闭时不应用任何 LoRA，输出原样透传）及 **每槽位 `enabled_1` … `enabled_10` 独立开关**，便于快速 A/B 对比与部分堆叠而无需重连。实现于 `nodes/lora/standard_v3.py`；README 与 zhmd README 已补充用法与开关真值表说明。
