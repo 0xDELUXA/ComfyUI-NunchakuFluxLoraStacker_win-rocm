@@ -386,4 +386,3 @@ See [Changelog](md/CHANGELOG.md) for the full release history.
 - Florence-2 code under `nodes/florence2/` is derived from [kijai/ComfyUI-Florence2](https://github.com/kijai/ComfyUI-Florence2) and is licensed under the **MIT License**; see `nodes/florence2/LICENSE` for the full text and copyright notice for that subtree.
 - ControlAltAI code under `nodes/controlaltai/` — **MIT License** (see [ControlAltAI nodes](#controlaltai-nodes))
 - CCSR code under `nodes/CCSR/` is derived from [kijai/ComfyUI-CCSR](https://github.com/kijai/ComfyUI-CCSR) (which is based on the original [csslc/CCSR](https://github.com/csslc/CCSR) Apache-2.0 implementation).
-
