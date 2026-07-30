@@ -51,7 +51,7 @@ This repository provides **thirteen custom nodes** for ComfyUI:
     
     <img src="png/ccsr.png" width="400">
 
-12. **Resolution Selector** (`ResolutionSelector`) — Pick width/height from Flux1-style aspect presets (or custom size), emit hires dimensions, an empty **16-channel** latent, and an info string (see **[Resolution Selector](#resolution-selector-resolutionselector)** below).
+12. **Nunchaku Resolution Selector** (`NunchakuResolutionSelector`) — Pick width/height from Flux1-style aspect presets (or custom size), emit hires dimensions, an empty **16-channel** latent, and an info string (see **[Nunchaku Resolution Selector](#nunchaku-resolution-selector-nunchakuresolutionselector)** below).
 
     <img src="png/Resolution%20Selector.png" width="400">
 
@@ -328,7 +328,7 @@ The CCSR implementation here started from **[kijai/ComfyUI-CCSR](https://github.
 
 ---
 
-## Resolution Selector (`ResolutionSelector`)
+## Nunchaku Resolution Selector (`NunchakuResolutionSelector`)
 
 Resolution helper that outputs pixel sizes and an empty **16-channel** latent. Implementation: `nodes/resolution_selector.py`. Menu category: **ussoewwin/resolution**.
 

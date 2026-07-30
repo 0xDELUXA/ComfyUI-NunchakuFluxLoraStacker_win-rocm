@@ -9,7 +9,7 @@
 
 ## Release History
 
-- v1.37 – Resolution Selector: Added **Resolution Selector** (`ResolutionSelector`) under `ussoewwin/resolution`—pick width/height from Flux1-style aspect presets (or custom size), emit hires dimensions, an empty **16-channel** latent, and an info string. Preset list expanded from ControlAltAI Megapixel Calculator ratios (1.0 MP / 1.5 MP High). Documented in README and zhmd README with screenshot.
+- v1.37 – Nunchaku Resolution Selector: Added **Nunchaku Resolution Selector** (`NunchakuResolutionSelector`) under `ussoewwin/resolution`—pick width/height from Flux1-style aspect presets (or custom size), emit hires dimensions, an empty **16-channel** latent, and an info string. Preset list expanded from ControlAltAI Megapixel Calculator ratios (1.0 MP / 1.5 MP High). Documented in README and zhmd README with screenshot.
 
 - v1.36 – LoRA Stacker V3: Added **LoRA Stacker V3** (`LoraStackerV3_10`) for standard SD models—the same 10-slot stack as V2, plus a **global `toggle_all` master switch** (when off, no LoRAs are applied and outputs pass through unchanged) and **per-slot `enabled_1` … `enabled_10` toggles** for quick A/B comparisons and partial stacks without rewiring. Implemented in `nodes/lora/standard_v3.py`; README and zhmd README document usage and the toggle truth table.
 

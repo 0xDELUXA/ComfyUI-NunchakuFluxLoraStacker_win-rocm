@@ -51,7 +51,7 @@
     
     <img src="../png/ccsr.png" width="400">
 
-12. **Resolution Selector**（`ResolutionSelector`）— 从 Flux1 风格的宽高比预设（或自定义尺寸）选择宽高，输出 hires 尺寸、空 **16 通道** latent，以及 info 字符串（参见下方 **[Resolution Selector](#resolution-selector-resolutionselector)**）。
+12. **Nunchaku Resolution Selector**（`NunchakuResolutionSelector`）— 从 Flux1 风格的宽高比预设（或自定义尺寸）选择宽高，输出 hires 尺寸、空 **16 通道** latent，以及 info 字符串（参见下方 **[Nunchaku Resolution Selector](#nunchaku-resolution-selector-nunchakuresolutionselector)**）。
 
     <img src="../png/Resolution%20Selector.png" width="400">
 
@@ -328,7 +328,7 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 
 ---
 
-## Resolution Selector (`ResolutionSelector`)
+## Nunchaku Resolution Selector (`NunchakuResolutionSelector`)
 
 输出像素尺寸与空 **16 通道** latent 的分辨率辅助节点。实现：`nodes/resolution_selector.py`。菜单分类：**ussoewwin/resolution**。
 

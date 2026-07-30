@@ -1,8 +1,8 @@
 """
-Resolution Selector node (16-channel empty latent + size presets).
+Nunchaku Resolution Selector node (16-channel empty latent + size presets).
 
-Registered type: ResolutionSelector
-Display name: Resolution Selector
+Registered type: NunchakuResolutionSelector
+Display name: Nunchaku Resolution Selector
 """
 
 from __future__ import annotations
@@ -58,7 +58,7 @@ def _parse_wh(preset: str) -> tuple[int, int] | None:
     return int(m.group(1)), int(m.group(2))
 
 
-class ResolutionSelector:
+class NunchakuResolutionSelector:
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -130,7 +130,7 @@ class ResolutionSelector:
             dtype=dtype,
         )
         info = (
-            f"Resolution Selector mode={mode} source={source} "
+            f"Nunchaku Resolution Selector mode={mode} source={source} "
             f"{width}x{height} hires={hires_width}x{hires_height} "
             f"scale={hires_scale} batch={batch_size}"
         )
@@ -145,9 +145,9 @@ class ResolutionSelector:
 
 
 NODE_CLASS_MAPPINGS = {
-    "ResolutionSelector": ResolutionSelector,
+    "NunchakuResolutionSelector": NunchakuResolutionSelector,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "ResolutionSelector": "Resolution Selector",
+    "NunchakuResolutionSelector": "Nunchaku Resolution Selector",
 }
