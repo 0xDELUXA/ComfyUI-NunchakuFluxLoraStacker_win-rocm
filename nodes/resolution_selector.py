@@ -1,7 +1,7 @@
 """
-Resolution Selector node for Anima / 16-channel latent workflows.
+Resolution Selector node (16-channel empty latent + size presets).
 
-Registered type: AnimaResolutionSelector (workflow compatibility)
+Registered type: ResolutionSelector
 Display name: Resolution Selector
 """
 
@@ -58,7 +58,7 @@ def _parse_wh(preset: str) -> tuple[int, int] | None:
     return int(m.group(1)), int(m.group(2))
 
 
-class AnimaResolutionSelector:
+class ResolutionSelector:
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -145,9 +145,9 @@ class AnimaResolutionSelector:
 
 
 NODE_CLASS_MAPPINGS = {
-    "AnimaResolutionSelector": AnimaResolutionSelector,
+    "ResolutionSelector": ResolutionSelector,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "AnimaResolutionSelector": "Resolution Selector",
+    "ResolutionSelector": "Resolution Selector",
 }

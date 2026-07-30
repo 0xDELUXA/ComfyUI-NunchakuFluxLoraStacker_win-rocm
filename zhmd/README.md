@@ -51,7 +51,7 @@
     
     <img src="../png/ccsr.png" width="400">
 
-12. **Resolution Selector**（`AnimaResolutionSelector`）— 从 Flux1 风格的宽高比预设（或自定义尺寸）选择宽高，输出 hires 尺寸、面向 Anima 工作流的空 **16 通道** latent，以及 info 字符串（参见下方 **[Resolution Selector](#resolution-selector-animaresolutionselector)**）。
+12. **Resolution Selector**（`ResolutionSelector`）— 从 Flux1 风格的宽高比预设（或自定义尺寸）选择宽高，输出 hires 尺寸、空 **16 通道** latent，以及 info 字符串（参见下方 **[Resolution Selector](#resolution-selector-resolutionselector)**）。
 
     <img src="../png/Resolution%20Selector.png" width="400">
 
@@ -328,13 +328,13 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 
 ---
 
-## Resolution Selector (`AnimaResolutionSelector`)
+## Resolution Selector (`ResolutionSelector`)
 
-面向 **Anima / 16 通道 latent** 工作流的分辨率辅助节点。实现：`nodes/resolution_selector.py`。菜单分类：**ussoewwin/resolution**。
+输出像素尺寸与空 **16 通道** latent 的分辨率辅助节点。实现：`nodes/resolution_selector.py`。菜单分类：**ussoewwin/resolution**。
 
 ### 用途
 
-从面向 Flux1 的预设列表（与 `nodes/controlaltai/` 下 ControlAltAI Megapixel Calculator 相同的宽高比词汇）选择画布尺寸，或输入自定义宽高。节点输出整型尺寸、经 `hires_scale` 计算的 hires 尺寸、适合 Anima 风格 Empty Latent 接线的空 **16 通道** latent（`batch × 16 × H/8 × W/8`），以及用于调试的简短 `info` 字符串。
+从面向 Flux1 的预设列表（与 `nodes/controlaltai/` 下 ControlAltAI Megapixel Calculator 相同的宽高比词汇）选择画布尺寸，或输入自定义宽高。节点输出整型尺寸、经 `hires_scale` 计算的 hires 尺寸、空 **16 通道** latent（`batch × 16 × H/8 × W/8`），以及用于调试的简短 `info` 字符串。
 
 ### 截图
 
@@ -356,7 +356,7 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 |------|------|------|
 | `width` / `height` | INT | 选定的像素尺寸。 |
 | `hires_width` / `hires_height` | INT | 应用 `hires_scale` 后的尺寸（最小 16，8 的倍数）。 |
-| `latent` | LATENT | **16** 通道的空 samples 张量（面向 Anima）。 |
+| `latent` | LATENT | **16** 通道的空 samples 张量。 |
 | `info` | STRING | 可读摘要（`mode`、来源、尺寸、倍率、batch）。 |
 
 ### 行为说明

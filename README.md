@@ -51,7 +51,7 @@ This repository provides **thirteen custom nodes** for ComfyUI:
     
     <img src="png/ccsr.png" width="400">
 
-12. **Resolution Selector** (`AnimaResolutionSelector`) — Pick width/height from Flux1-style aspect presets (or custom size), emit hires dimensions, an empty **16-channel** latent for Anima-style workflows, and an info string (see **[Resolution Selector](#resolution-selector-animaresolutionselector)** below).
+12. **Resolution Selector** (`ResolutionSelector`) — Pick width/height from Flux1-style aspect presets (or custom size), emit hires dimensions, an empty **16-channel** latent, and an info string (see **[Resolution Selector](#resolution-selector-resolutionselector)** below).
 
     <img src="png/Resolution%20Selector.png" width="400">
 
@@ -328,13 +328,13 @@ The CCSR implementation here started from **[kijai/ComfyUI-CCSR](https://github.
 
 ---
 
-## Resolution Selector (`AnimaResolutionSelector`)
+## Resolution Selector (`ResolutionSelector`)
 
-Resolution helper for **Anima / 16-channel latent** workflows. Implementation: `nodes/resolution_selector.py`. Menu category: **ussoewwin/resolution**.
+Resolution helper that outputs pixel sizes and an empty **16-channel** latent. Implementation: `nodes/resolution_selector.py`. Menu category: **ussoewwin/resolution**.
 
 ### Purpose
 
-Choose a canvas size from a Flux1-oriented preset list (same aspect-ratio vocabulary as the ControlAltAI Megapixel Calculator under `nodes/controlaltai/`), or enter a custom width/height. The node outputs integer sizes, optional hires sizes via `hires_scale`, an empty **16-channel** latent (`batch × 16 × H/8 × W/8`) suitable for Anima-style Empty Latent wiring, and a short `info` string for debugging.
+Choose a canvas size from a Flux1-oriented preset list (same aspect-ratio vocabulary as the ControlAltAI Megapixel Calculator under `nodes/controlaltai/`), or enter a custom width/height. The node outputs integer sizes, optional hires sizes via `hires_scale`, an empty **16-channel** latent (`batch × 16 × H/8 × W/8`), and a short `info` string for debugging.
 
 ### Screenshot
 
@@ -356,7 +356,7 @@ Choose a canvas size from a Flux1-oriented preset list (same aspect-ratio vocabu
 |------|------|-------------|
 | `width` / `height` | INT | Selected pixel size. |
 | `hires_width` / `hires_height` | INT | Size after `hires_scale` (min 16, multiple of 8). |
-| `latent` | LATENT | Empty samples tensor with **16** channels (Anima-oriented). |
+| `latent` | LATENT | Empty samples tensor with **16** channels. |
 | `info` | STRING | Human-readable summary (`mode`, source, sizes, scale, batch). |
 
 ### Behaviour notes
