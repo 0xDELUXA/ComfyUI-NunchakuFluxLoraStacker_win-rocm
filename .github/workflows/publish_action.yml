@@ -1,11 +1,9 @@
 name: Publish to Comfy registry
 on:
+  # Manual only. Do NOT publish on git tag push — tag/release is independent of
+  # Registry; auto-publish on tags caused unauthorized/failed runs when the
+  # owner ordered tag push alone (pyproject version may not match).
   workflow_dispatch:
-  # Publish once per release tag only. Pushing pyproject.toml to main would
-  # re-run with the same [project].version and hit 400 "node version already exists".
-  push:
-    tags:
-      - "v*"
 
 jobs:
   publish-node:
@@ -18,4 +16,3 @@ jobs:
         uses: Comfy-Org/publish-node-action@main
         with:
           personal_access_token: ${{ secrets.REGISTRY_ACCESS_TOKEN }}
-
