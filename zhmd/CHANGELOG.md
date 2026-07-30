@@ -9,6 +9,8 @@
 
 ## 发布历史
 
+- v1.37 – Resolution Selector：新增 **Resolution Selector**（`ResolutionSelector`，菜单 `ussoewwin/resolution`）— 从 Flux1 风格宽高比预设（或自定义尺寸）选择宽高，输出 hires 尺寸、空 **16 通道** latent 与 info 字符串。预设沿用 ControlAltAI Megapixel Calculator 的比例（1.0 MP / 1.5 MP High）。README 与 zhmd README 已补充说明与截图。
+
 - v1.36 – LoRA Stacker V3：新增标准 SD 模型用 **LoRA Stacker V3**（`LoraStackerV3_10`）— 与 V2 相同的 10 槽位堆叠，另增 **全局 `toggle_all` 总开关**（关闭时不应用任何 LoRA，输出原样透传）及 **每槽位 `enabled_1` … `enabled_10` 独立开关**，便于快速 A/B 对比与部分堆叠而无需重连。实现于 `nodes/lora/standard_v3.py`；README 与 zhmd README 已补充用法与开关真值表说明。
 
 - v1.35 – CCSR: 在 `nodes/CCSR/` 下集成了 CCSR 放大节点（CCSR_Upscale、CCSR_Model_Select、DownloadAndLoadCCSRModel；上游源自 [kijai/ComfyUI-CCSR](https://github.com/kijai/ComfyUI-CCSR)，基于原始 [csslc/CCSR](https://github.com/csslc/CCSR) 的 Apache-2.0 实现）。添加了对 Python 3.13 和最新 ComfyUI 环境的兼容支持，实现了动态包路径解析以支持自定义安装目录名称，并在 README 中添加了节点说明和截图。
