@@ -336,10 +336,6 @@ Resolution helper that outputs pixel sizes and an empty **16-channel** latent. I
 
 Choose a canvas size from a Flux1-oriented preset list (same aspect-ratio vocabulary as the ControlAltAI Megapixel Calculator under `nodes/controlaltai/`), or enter a custom width/height. The node outputs integer sizes, optional hires sizes via `hires_scale`, an empty **16-channel** latent (`batch × 16 × H/8 × W/8`), and a short `info` string for debugging.
 
-### Screenshot
-
-<img src="png/Resolution%20Selector.png" width="400">
-
 ### Inputs
 
 | Widget | Type | Description |

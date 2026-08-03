@@ -336,10 +336,6 @@ Florence-2 特定包包括 **transformers**、**accelerate**、**peft**、**timm
 
 从面向 Flux1 的预设列表（与 `nodes/controlaltai/` 下 ControlAltAI Megapixel Calculator 相同的宽高比词汇）选择画布尺寸，或输入自定义宽高。节点输出整型尺寸、经 `hires_scale` 计算的 hires 尺寸、空 **16 通道** latent（`batch × 16 × H/8 × W/8`），以及用于调试的简短 `info` 字符串。
 
-### 截图
-
-<img src="../png/Resolution%20Selector.png" width="400">
-
 ### 输入
 
 | 控件 | 类型 | 说明 |
